@@ -1,4 +1,4 @@
-# Rwanda Water Resources Platform
+# Hydro-Tronics Eng. Platform
 
 Professional plumbing engineering and water management system for Rwanda.
 

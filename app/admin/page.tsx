@@ -271,7 +271,7 @@ export default function AdminDashboard() {
       <aside className="sidebar">
         <div className="brand">
           <Logo size={32} />
-          <span>Rwanda Water Resources</span>
+          <span>Hydro-Tronics</span>
         </div>
         <nav className="side-nav">
           <button 
@@ -316,8 +316,8 @@ export default function AdminDashboard() {
             <input type="text" placeholder={`Search ${activeTab}...`} />
           </div>
           <div className="user-profile">
-            <div className="avatar">RWR</div>
-            <span>Rwanda Water Resources</span>
+            <div className="avatar">HT</div>
+            <span>Hydro-Tronics Eng</span>
           </div>
         </header>
 

@@ -21,7 +21,7 @@ export default function Navbar() {
       <div className="container flex justify-between items-center">
         <div className={`flex items-center gap-2 transition-colors ${isScrolled ? "text-dark" : "text-white"}`}>
           <Logo size={40} color={isScrolled ? "#000" : "#fff"} />
-          <span className="text-2xl font-bold tracking-tight">Rwanda Water Resources Eng.</span>
+          <span className="text-2xl font-bold tracking-tight">Hydro-Tronics Eng.</span>
         </div>
 
         {/* Desktop Menu */}

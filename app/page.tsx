@@ -106,9 +106,9 @@ export default function Home() {
              </div>
             <div className="about-content">
               <span className="subtitle">Who We Are</span>
-              <h2>Rwanda Water <span className="text-primary">Resources</span></h2>
+              <h2>Hydro-Tronics <span className="text-primary">Eng.</span></h2>
               <p>
-                Founded on the principles of innovation and reliability, Rwanda Water Resources is at the forefront of modern plumbing engineering and water management systems in Kigali.
+                Founded on the principles of innovation and reliability, Hydro-Tronics Eng. is at the forefront of modern plumbing engineering and water management systems in Kigali.
               </p>
               <div className="founder-brief">
                  <h4>Jean Aime BIKORIMANA</h4>
@@ -262,10 +262,10 @@ export default function Home() {
             <div className="footer-main-info">
               <div className="flex items-center gap-4 mb-4">
                 <Logo size={45} color="white" />
-                <h3 className="text-xl font-bold text-white tracking-tight">Rwanda Water Resources</h3>
+                <h3 className="text-xl font-bold text-white tracking-tight">Hydro-Tronics Eng</h3>
               </div>
               <p className="footer-tagline mb-10 opacity-70">
-                Supply of durable plumbing products and modern engineering solutions in Kigali. Rwanda Water Resources is dedicated to innovation and precision.
+                Supply of durable plumbing products and modern engineering solutions in Kigali. Hydro-Tronics Eng. is dedicated to innovation and precision.
               </p>
               
               <div className="social-links-square">
@@ -298,7 +298,7 @@ export default function Home() {
                     </div>
                     <div className="s-contact">
                       <Mail size={14} className="text-primary" />
-                      <span>info@rwanda-water.com</span>
+                      <span>info@hydro-tronics.com</span>
                     </div>
                   </div>
                 </div>
