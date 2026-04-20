@@ -103,6 +103,25 @@ export default function Navbar() {
         .text-dark { color: #000; }
         .text-white { color: #fff; }
         .transition-colors { transition: color 0.3s ease; }
+        .w-2\/3 { width: 66%; }
+        .text-center { text-align: center; }
+        .shadow-2xl { box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25); }
+
+        button.md\\:hidden {
+          background: none;
+          border: none;
+          cursor: pointer;
+          color: inherit;
+          padding: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+          .text-2xl { font-size: 1.2rem; }
+          nav .container { padding: 0 1rem; }
+        }
+        @media (max-width: 480px) {
+          .text-2xl { font-size: 1rem; }
+        }
       `}</style>
     </nav>
   );

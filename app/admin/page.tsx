@@ -928,6 +928,63 @@ export default function AdminDashboard() {
           display: inline-block;
           margin-top: 4px;
         }
+
+        /* ===== ADMIN RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+          .admin-container { grid-template-columns: 220px 1fr; }
+          .stats { grid-template-columns: repeat(2, 1fr); }
+          .form-grid { grid-template-columns: 1fr; }
+          .search-bar { width: 250px; }
+        }
+        @media (max-width: 768px) {
+          .admin-container { grid-template-columns: 1fr; }
+          .sidebar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            top: auto;
+            height: auto;
+            flex-direction: row;
+            padding: 0.5rem 1rem;
+            z-index: 100;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            border-right: none;
+          }
+          .brand { display: none; }
+          .sidebar-footer { display: none; }
+          .side-nav {
+            flex-direction: row;
+            gap: 0;
+            width: 100%;
+            justify-content: space-around;
+          }
+          .side-nav button {
+            flex-direction: column;
+            font-size: 0.65rem;
+            padding: 0.5rem 0.3rem;
+            gap: 0.2rem;
+            border-radius: 8px;
+          }
+          .main-content { padding: 1.5rem 1rem 5rem; }
+          .top-bar { flex-direction: column; gap: 1rem; align-items: stretch; }
+          .search-bar { width: 100%; }
+          .user-profile { display: none; }
+          .stats { grid-template-columns: 1fr 1fr; gap: 1rem; }
+          .stat-card { padding: 1.2rem; }
+          .stat-card h3 { font-size: 1.4rem; }
+          table { font-size: 0.8rem; }
+          th, td { padding: 0.6rem 0.5rem; }
+          .msg-cell { max-width: 120px; }
+          .admin-product-item { flex-wrap: wrap; }
+        }
+        @media (max-width: 480px) {
+          .stats { grid-template-columns: 1fr; }
+          .side-nav button { font-size: 0.6rem; padding: 0.4rem 0.2rem; }
+          .stat-card { border-radius: 16px; }
+          .modal-actions { flex-direction: column; }
+          .modal-actions button { width: 100%; }
+        }
       `}</style>
     </div>
   );

@@ -263,6 +263,23 @@ export default function WhatsAppWidget() {
           transform: scale(1.1);
           box-shadow: 0 6px 16px rgba(37, 211, 102, 0.5);
         }
+
+        @media (max-width: 480px) {
+          .wa-widget-container {
+            bottom: 16px;
+            right: 16px;
+          }
+          .wa-chat-window {
+            width: calc(100vw - 32px);
+            position: fixed;
+            bottom: 90px;
+            right: 16px;
+          }
+          .wa-toggle-btn {
+            width: 52px;
+            height: 52px;
+          }
+        }
       `}</style>
     </>
   );
