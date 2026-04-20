@@ -39,6 +39,8 @@ export default function Portfolio() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
+  const [isPaused, setIsPaused] = useState(false);
+  const autoScrollTimer = useRef<NodeJS.Timeout | null>(null);
 
   const checkScroll = () => {
     if (scrollRef.current) {
@@ -58,6 +60,33 @@ export default function Portfolio() {
       scrollRef.current.scrollTo({ left: scrollTo, behavior: "smooth" });
     }
   };
+
+  // Auto-scroll: move one card every 3 seconds, loop back at the end
+  useEffect(() => {
+    if (products.length === 0 || isPaused) return;
+
+    autoScrollTimer.current = setInterval(() => {
+      if (scrollRef.current) {
+        const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
+        const isAtEnd = scrollLeft >= scrollWidth - clientWidth - 10;
+
+        if (isAtEnd) {
+          // Loop back to start smoothly
+          scrollRef.current.scrollTo({ left: 0, behavior: "smooth" });
+        } else {
+          const scrollAmount = 432;
+          scrollRef.current.scrollTo({ 
+            left: scrollLeft + scrollAmount, 
+            behavior: "smooth" 
+          });
+        }
+      }
+    }, 3000);
+
+    return () => {
+      if (autoScrollTimer.current) clearInterval(autoScrollTimer.current);
+    };
+  }, [products, isPaused]);
 
   const trackOrder = async (title: string, price: string, productId?: string) => {
     try {
@@ -141,7 +170,13 @@ export default function Portfolio() {
         </div>
 
         <h3 className="sub-title mt-20">Premium Products</h3>
-        <div className="carousel-container">
+        <div 
+          className="carousel-container"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+          onTouchStart={() => setIsPaused(true)}
+          onTouchEnd={() => setIsPaused(false)}
+        >
           {canScrollLeft && (
             <button className="carousel-btn left" onClick={() => scroll("left")} aria-label="Scroll left">
               <ChevronLeft size={30} />
