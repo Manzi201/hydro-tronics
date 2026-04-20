@@ -100,7 +100,7 @@ export default function Home() {
           <div className="about-wrapper">
              <div className="founder-card glass">
                 <div className="founder-image">
-                   <img src="/media__1776711202534.png" alt="Jean Aime BIKORIMANA - Founder & CEO" />
+                   <img src="/ceo.png" alt="Jean Aime BIKORIMANA - Founder & CEO" />
                 </div>
                 <div className="founder-badge">Founder & CEO</div>
              </div>
