@@ -491,6 +491,19 @@ export default function Home() {
             outline: none;
             transition: all 0.3s;
           }
+          .form-group-sm select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            padding-right: 2.5rem;
+            cursor: pointer;
+          }
+          .form-group-sm select option {
+            background-color: #0b1120;
+            color: white;
+            padding: 1rem;
+          }
           .form-group-sm textarea { resize: none; }
           .form-group-sm input:focus, .form-group-sm select:focus, .form-group-sm textarea:focus {
             border-color: var(--primary);
