@@ -121,7 +121,7 @@ export default function Portfolio() {
         <div className="grid portfolio-grid">
           {works.map((item, i) => (
             <div key={i} className="card portfolio-card">
-              <div className="card-image" style={{ '--bg-image': `url(${item.image_url})` } as any}>
+              <div className="card-image" style={{ '--bg-image': `url(${item.image_url})` } as React.CSSProperties}>
                 <div className="card-overlay">
                   <span className="cat">{item.category}</span>
                 </div>
@@ -159,7 +159,7 @@ export default function Portfolio() {
                   className="card-image-main"
                   style={{ 
                     '--product-image': `url(${item.image_url || '/product-1.png'})`
-                  } as any}
+                  } as React.CSSProperties}
                 ></div>
                 <div className="card-footer">
                   <div className="price-info">
@@ -217,7 +217,7 @@ export default function Portfolio() {
                 <div className="modal-image-container">
                     <div 
                       className="modal-image zoom-image" 
-                      style={{ '--modal-bg': `url(${selectedItem.image_url})` } as any}
+                      style={{ '--modal-bg': `url(${selectedItem.image_url})` } as React.CSSProperties}
                     ></div>
                 </div>
                 <div className="modal-text">
