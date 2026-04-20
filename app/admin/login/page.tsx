@@ -15,7 +15,8 @@ export default function AdminLogin() {
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    if (username === "hyrdotronicseng@gmail.com" && password === "hydro2024") {
+    const normalizedUser = username.trim().toLowerCase();
+    if ((normalizedUser === "hyrdotronicseng@gmail.com" || normalizedUser === "hydrotronicseng@gmail.com") && password.trim() === "Hydrotronics@2026") {
       localStorage.setItem("isAdminAuthenticated", "true");
       router.push("/admin");
     } else {
