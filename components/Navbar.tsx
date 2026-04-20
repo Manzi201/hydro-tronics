@@ -42,11 +42,12 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 w-full bg-white shadow-xl py-6 flex flex-col items-center gap-4 animate-in fade-in slide-in-from-top-4 text-black">
+        <div className="md:hidden absolute top-full left-0 w-full glass shadow-2xl py-8 flex flex-col items-center gap-6 animate-in slide-in-from-top-2 duration-300">
           <a href="#home" className="nav-link-mobile" onClick={() => setIsMenuOpen(false)}>Home</a>
           <a href="#services" className="nav-link-mobile" onClick={() => setIsMenuOpen(false)}>Services</a>
+          <a href="#portfolio" className="nav-link-mobile" onClick={() => setIsMenuOpen(false)}>Portfolio</a>
           <a href="#about" className="nav-link-mobile" onClick={() => setIsMenuOpen(false)}>About</a>
-          <a href="/admin/login" className="btn btn-primary" onClick={() => setIsMenuOpen(false)}>Get Started</a>
+          <a href="/admin/login" className="btn btn-primary w-2/3 text-center" onClick={() => setIsMenuOpen(false)}>Get Started</a>
         </div>
       )}
 
@@ -94,9 +95,10 @@ export default function Navbar() {
           opacity: 0.8;
         }
         .nav-link-mobile {
-          color: black;
+          color: white;
           font-weight: 600;
           text-decoration: none;
+          font-size: 1.1rem;
         }
         .text-dark { color: #000; }
         .text-white { color: #fff; }

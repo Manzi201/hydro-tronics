@@ -248,6 +248,13 @@ export default function Home() {
           @media (max-width: 968px) {
             .about-wrapper { grid-template-columns: 1fr; gap: 3rem; }
             .about-content h2 { font-size: 2.5rem; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            section { padding: 60px 20px; }
+          }
+          @media (max-width: 480px) {
+            .stats-grid { grid-template-columns: 1fr; }
+            .about-content h2 { font-size: 2rem; }
+            .footer-actual-form { padding: 1rem 0; }
           }
         `}</style>
       </section>
@@ -562,14 +569,21 @@ export default function Home() {
           @media (max-width: 1024px) {
             .footer-grid { grid-template-columns: 1fr; gap: 4rem; }
             .form-with-sidebar { grid-template-columns: 1fr; }
-            .form-sidebar { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
+            .form-sidebar { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 2rem; }
           }
-          @media (max-width: 640px) {
-            .form-row { grid-template-columns: 1fr; }
-          }
-
           @media (max-width: 768px) {
             .footer-grid { grid-template-columns: 1fr; gap: 3rem; }
+            .form-row { grid-template-columns: 1fr; }
+            .form-content { padding: 1.5rem; }
+            .footer-form-container { border-radius: 16px; }
+          }
+          @media (max-width: 480px) {
+            .footer { padding: 3rem 0 2rem; }
+            .form-content { padding: 1.25rem; }
+            .form-sidebar { padding: 1.5rem; }
+            .form-sidebar h3 { font-size: 1.2rem; }
+            .social-links-square { gap: 0.8rem; }
+            .sq-social { width: 40px; height: 40px; border-radius: 10px; }
           }
         `}</style>
       </footer>

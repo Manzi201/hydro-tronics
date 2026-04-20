@@ -72,11 +72,22 @@ export default function Hero() {
           color: var(--primary);
         }
 
+        @media (max-width: 1024px) {
+          .hero-title { font-size: 3.5rem; }
+          .hero-content { max-width: 600px; }
+        }
         @media (max-width: 768px) {
-          .hero-title { font-size: 3rem; }
-          .hero-subtitle { font-size: 1.1rem; }
+          .hero-section { min-height: 600px; }
+          .hero-title { font-size: 2.5rem; }
+          .hero-subtitle { font-size: 1rem; }
           .hero-actions { display: flex; flex-direction: column; gap: 1rem; }
           .ml-4 { margin-left: 0; }
+          .btn-lg { padding: 0.85rem 1.8rem; font-size: 0.95rem; width: 100%; text-align: center; }
+        }
+        @media (max-width: 480px) {
+          .hero-section { min-height: 500px; }
+          .hero-title { font-size: 2rem; }
+          .hero-subtitle { font-size: 0.9rem; margin-bottom: 2rem; }
         }
       `}</style>
     </section>

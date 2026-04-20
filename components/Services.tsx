@@ -115,6 +115,17 @@ export default function Services() {
         .service-card p {
           font-size: 1rem;
         }
+        @media (max-width: 768px) {
+          .services-grid { grid-template-columns: 1fr; }
+          .section-header h2 { font-size: 2.2rem; }
+          .service-card { padding: 2rem; }
+        }
+        @media (max-width: 480px) {
+          .section-header h2 { font-size: 1.8rem; }
+          .service-card { padding: 1.5rem; border-radius: 16px; }
+          .service-card h3 { font-size: 1.2rem; }
+          .service-card p { font-size: 0.9rem; }
+        }
       `}</style>
     </section>
   );

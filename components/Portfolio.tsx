@@ -625,6 +625,57 @@ export default function Portfolio() {
         .items-center { align-items: center; }
         .mb-2 { margin-bottom: 0.5rem; }
         .mr-2 { margin-right: 0.5rem; }
+
+        /* ===== TABLET (max 1024px) ===== */
+        @media (max-width: 1024px) {
+          .modal-content { max-width: 90%; }
+          .portfolio-grid { grid-template-columns: 1fr 1fr; }
+          .product-card-modern { min-width: 340px; }
+        }
+
+        /* ===== SMALL TABLET / LARGE PHONE (max 868px) ===== */
+        @media (max-width: 868px) {
+          .carousel-btn { display: none; }
+          .product-card-modern { min-width: 280px; padding: 1.5rem; }
+          .card-image-main { height: 220px; }
+          .card-top h3 { font-size: 1.4rem; }
+          .modal-body { grid-template-columns: 1fr; }
+          .modal-image-container { height: 300px; min-height: 300px; }
+          .modal-text { padding: 2rem; }
+          .modal-text h2 { font-size: 1.8rem; }
+        }
+
+        /* ===== PHONE (max 768px) ===== */
+        @media (max-width: 768px) {
+          .portfolio-grid { grid-template-columns: 1fr; }
+          .section-header h2 { font-size: 2rem; }
+          .sub-title { font-size: 1.5rem; }
+          .card-image { height: 220px; }
+          .card-content { padding: 1.5rem; }
+          .card-content h3 { font-size: 1.2rem; }
+          .modal-overlay { padding: 1rem; }
+          .modal-content { max-width: 100%; border-radius: 20px; }
+        }
+
+        /* ===== SMALL PHONE (max 480px) ===== */
+        @media (max-width: 480px) {
+          .section-header h2 { font-size: 1.6rem; }
+          .sub-title { font-size: 1.2rem; padding-left: 1rem; }
+          .product-card-modern { min-width: 260px; padding: 1.2rem; }
+          .card-image-main { height: 180px; }
+          .card-top h3 { font-size: 1.2rem; }
+          .card-footer { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+          .price { font-size: 1rem; }
+          .modal-text { padding: 1.25rem; }
+          .modal-text h2 { font-size: 1.4rem; }
+          .modal-price { font-size: 1.2rem; }
+          .description { font-size: 0.95rem; }
+          .modal-actions { flex-direction: column; }
+          .modal-actions button { width: 100%; }
+          .modal-image-container { height: 240px; min-height: 240px; }
+          .zoom-image:hover { transform: scale(1.2); }
+          .mt-20 { margin-top: 3rem; }
+        }
       `}</style>
     </section>
   );
