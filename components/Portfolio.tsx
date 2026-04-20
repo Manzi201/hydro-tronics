@@ -181,8 +181,9 @@ export default function Portfolio() {
                         const origin = window.location.origin;
                         const fullImageUrl = item.image_url.startsWith('http') ? item.image_url : `${origin}${item.image_url}`;
                         trackOrder(item.title, item.price, item.id);
-                        // Putting image first often helps WhatsApp generate a rich preview card
-                        window.open(`https://wa.me/250780592673?text=${fullImageUrl}%0A%0AHello, I am interested in ${item.title}.%0APrice: ${item.price}`, '_blank');
+                        // Clean message format for better WhatsApp preview
+                        const message = encodeURIComponent(`📸 *Product Photo:* ${fullImageUrl}\n\n*Product:* ${item.title}\n*Price:* ${item.price}\n\nHello Hydro-Tronics Eng, I'm interested in this product.`);
+                        window.open(`https://wa.me/250780592673?text=${message}`, '_blank');
                       }}
                     >
                       {item.stock_quantity !== undefined && item.stock_quantity <= 0 ? 'Sold Out' : 'Order'}
@@ -254,7 +255,8 @@ export default function Portfolio() {
                             const origin = window.location.origin;
                             const fullImageUrl = selectedItem.image_url.startsWith('http') ? selectedItem.image_url : `${origin}${selectedItem.image_url}`;
                             trackOrder(selectedItem.title, selectedItem.price, selectedItem.id || "");
-                            window.open(`https://wa.me/250780592673?text=${fullImageUrl}%0A%0AHello, I want to order ${selectedItem.title}.%0APrice: ${selectedItem.price}`, '_blank');
+                            const message = encodeURIComponent(`📸 *Product Photo:* ${fullImageUrl}\n\n*Product:* ${selectedItem.title}\n*Price:* ${selectedItem.price}\n\nHello Hydro-Tronics Eng, I want to order this product.`);
+                            window.open(`https://wa.me/250780592673?text=${message}`, '_blank');
                           }}
                         >
                           {selectedItem.stock_quantity !== undefined && selectedItem.stock_quantity <= 0 ? 'Out of Stock' : 'Order via WhatsApp'}
