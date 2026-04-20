@@ -121,7 +121,7 @@ export default function Portfolio() {
         <div className="grid portfolio-grid">
           {works.map((item, i) => (
             <div key={i} className="card portfolio-card">
-              <div className="card-image" style={{ backgroundImage: `url(${item.image_url})` }}>
+              <div className="card-image" style={{ '--bg-image': `url(${item.image_url})` } as any}>
                 <div className="card-overlay">
                   <span className="cat">{item.category}</span>
                 </div>
@@ -156,13 +156,10 @@ export default function Portfolio() {
                   <h3>{item.title}</h3>
                 </div>
                 <div 
-                  className="card-image-main" 
+                  className="card-image-main"
                   style={{ 
-                    backgroundImage: `url(${item.image_url || '/product-1.png'})`,
-                    backgroundSize: 'contain',
-                    backgroundRepeat: 'no-repeat',
-                    backgroundPosition: 'center'
-                  }}
+                    '--product-image': `url(${item.image_url || '/product-1.png'})`
+                  } as any}
                 ></div>
                 <div className="card-footer">
                   <div className="price-info">
@@ -220,7 +217,7 @@ export default function Portfolio() {
                 <div className="modal-image-container">
                     <div 
                       className="modal-image zoom-image" 
-                      style={{ backgroundImage: `url(${selectedItem.image_url})` }}
+                      style={{ '--modal-bg': `url(${selectedItem.image_url})` } as any}
                     ></div>
                 </div>
                 <div className="modal-text">
@@ -355,8 +352,10 @@ export default function Portfolio() {
           font-weight: 900;
           color: #111;
         }
+        .card-image { background-image: var(--bg-image); }
         .card-image-main {
           height: 350px;
+          background-image: var(--product-image);
           background-size: contain;
           background-repeat: no-repeat;
           background-position: center;
@@ -540,6 +539,7 @@ export default function Portfolio() {
         .zoom-image {
           height: 100%;
           width: 100%;
+          background-image: var(--modal-bg);
           background-size: contain;
           background-repeat: no-repeat;
           background-position: center;
