@@ -612,12 +612,12 @@ export default function AdminDashboard() {
 
       <style jsx>{`
         :root {
-          --glass-bg: rgba(10, 15, 30, 0.45);
-          --glass-border: rgba(255, 255, 255, 0.08);
-          --accent-blue: #3b82f6;
-          --accent-cyan: #06b6d4;
-          --text-main: #f1f5f9;
-          --text-dim: #94a3b8;
+          --glass-bg: rgba(255, 255, 255, 0.8);
+          --glass-border: rgba(0, 0, 0, 0.08);
+          --accent-blue: #2563eb;
+          --accent-cyan: #0891b2;
+          --text-main: #1e293b;
+          --text-dim: #64748b;
           --danger: #ef4444;
           --success: #10b981;
           --warning: #f59e0b;
@@ -625,9 +625,9 @@ export default function AdminDashboard() {
         .admin-container {
           display: flex;
           min-height: 100vh;
-          background: #020617;
-          background-image: radial-gradient(circle at 15% 50%, rgba(59, 130, 246, 0.15), transparent 25%),
-                            radial-gradient(circle at 85% 30%, rgba(6, 182, 212, 0.15), transparent 25%);
+          background: #f8fafc;
+          background-image: radial-gradient(circle at 15% 50%, rgba(59, 130, 246, 0.05), transparent 25%),
+                            radial-gradient(circle at 85% 30%, rgba(6, 182, 212, 0.05), transparent 25%);
           font-family: 'Inter', system-ui, sans-serif;
           color: var(--text-main);
           position: relative;
@@ -635,16 +635,15 @@ export default function AdminDashboard() {
         }
         .sidebar {
           width: 280px;
-          background: var(--glass-bg);
-          backdrop-filter: blur(24px);
-          -webkit-backdrop-filter: blur(24px);
-          border-right: 1px solid var(--glass-border);
+          background: #0f172a;
+          border-right: 1px solid rgba(255, 255, 255, 0.05);
           color: white;
           padding: 2rem 1.5rem;
           display: flex;
           flex-direction: column;
           position: relative;
           z-index: 20;
+          box-shadow: 10px 0 30px rgba(0, 0, 0, 0.05);
         }
         .brand {
           display: flex;
@@ -668,7 +667,7 @@ export default function AdminDashboard() {
           align-items: center;
           gap: 1rem;
           padding: 1rem 1.25rem;
-          color: var(--text-dim);
+          color: #94a3b8;
           border-radius: 16px;
           transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
           background: transparent;
@@ -704,10 +703,10 @@ export default function AdminDashboard() {
           top: 50%;
           left: 55%; 
           transform: translate(-50%, -50%);
-          opacity: 0.02;
+          opacity: 0.1;
           pointer-events: none;
           z-index: -1;
-          filter: blur(4px);
+          filter: blur(8px);
         }
         .top-bar {
           display: flex;
@@ -716,21 +715,20 @@ export default function AdminDashboard() {
           margin-bottom: 3rem;
         }
         .search-bar {
-          background: var(--glass-bg);
-          backdrop-filter: blur(12px);
+          background: white;
           padding: 0.8rem 1.5rem;
           border-radius: 50px;
           display: flex;
           align-items: center;
           gap: 0.8rem;
           width: 400px;
-          border: 1px solid var(--glass-border);
-          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+          border: 1px solid #e2e8f0;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
           transition: all 0.3s ease;
         }
         .search-bar:focus-within {
-          border-color: rgba(59, 130, 246, 0.5);
-          box-shadow: 0 8px 32px rgba(59, 130, 246, 0.15);
+          border-color: var(--accent-blue);
+          box-shadow: 0 4px 20px rgba(37, 99, 235, 0.1);
           width: 450px;
         }
         .search-bar input {
@@ -739,7 +737,7 @@ export default function AdminDashboard() {
           width: 100%;
           font-size: 0.95rem;
           background: transparent;
-          color: white;
+          color: var(--text-main);
         }
         .search-bar input::placeholder {
           color: var(--text-dim);
@@ -749,10 +747,11 @@ export default function AdminDashboard() {
           align-items: center;
           gap: 1rem;
           font-weight: 600;
-          background: var(--glass-bg);
+          background: white;
           padding: 0.5rem 1rem 0.5rem 0.5rem;
           border-radius: 50px;
-          border: 1px solid var(--glass-border);
+          border: 1px solid #e2e8f0;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
         }
         .avatar {
           width: 40px;
@@ -773,32 +772,21 @@ export default function AdminDashboard() {
           margin-bottom: 3rem;
         }
         .stat-card {
-          background: var(--glass-bg);
-          backdrop-filter: blur(16px);
-          -webkit-backdrop-filter: blur(16px);
+          background: white;
           padding: 2rem;
           border-radius: 24px;
           display: flex;
           align-items: center;
           gap: 1.5rem;
-          border: 1px solid var(--glass-border);
+          border: 1px solid #e2e8f0;
           transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
           cursor: default;
-          position: relative;
-          overflow: hidden;
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
         }
-        .stat-card::before {
-          content: '';
-          position: absolute;
-          top: 0; left: 0; right: 0; bottom: 0;
-          background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, transparent 100%);
-          z-index: 1;
-        }
-        .stat-card > * { position: relative; z-index: 2; }
         .stat-card:hover {
           transform: translateY(-8px);
-          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-          border-color: rgba(255, 255, 255, 0.15);
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+          border-color: var(--accent-blue);
         }
         .icon {
           width: 64px;
@@ -819,35 +807,34 @@ export default function AdminDashboard() {
         .form-group label { font-size: 0.85rem; font-weight: 600; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.5px; }
         .form-group input, .form-group select, .form-group textarea {
           padding: 1rem 1.25rem;
-          border: 1px solid var(--glass-border);
+          border: 1px solid #e2e8f0;
           border-radius: 12px;
           font-family: inherit;
-          background: rgba(0,0,0,0.2);
-          color: white;
+          background: white;
+          color: var(--text-main);
           transition: all 0.3s;
         }
         .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
           outline: none;
           border-color: var(--accent-blue);
-          box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
-          background: rgba(0,0,0,0.4);
+          box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.05);
+          background: white;
         }
         .status-select {
           padding: 0.5rem 1rem;
           border-radius: 50px;
-          border: 1px solid var(--glass-border);
+          border: 1px solid #e2e8f0;
           font-weight: 700;
           font-size: 0.85rem;
           cursor: pointer;
-          background: var(--glass-bg);
-          color: white;
-          backdrop-filter: blur(8px);
+          background: white;
+          color: var(--text-main);
           outline: none;
         }
-        .status-select.pending { color: var(--warning); border-color: rgba(245, 158, 11, 0.3); }
-        .status-select.in-progress { color: var(--accent-cyan); border-color: rgba(6, 182, 212, 0.3); }
-        .status-select.completed { color: var(--success); border-color: rgba(16, 185, 129, 0.3); }
-        .status-select option { background: #0f172a; color: white; }
+        .status-select.pending { color: var(--warning); border-color: #fef3c7; background: #fffcf0; }
+        .status-select.in-progress { color: var(--accent-cyan); border-color: #e0f7fa; background: #f0fdff; }
+        .status-select.completed { color: var(--success); border-color: #dcfce7; background: #f0fdf4; }
+        .status-select option { background: white; color: var(--text-main); }
         .msg-cell { max-width: 250px; color: var(--text-dim); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
         .admin-product-list { margin-top: 1.5rem; display: flex; flex-direction: column; gap: 1rem; }
         .admin-product-item {
@@ -867,7 +854,7 @@ export default function AdminDashboard() {
         .product-img { width: 60px; height: 60px; background: rgba(0,0,0,0.4); border-radius: 12px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
         .product-img img { width: 100%; height: 100%; object-fit: cover; }
         .product-info-admin { flex: 1; }
-        .product-info-admin h4 { margin: 0; font-size: 1.1rem; color: white; font-weight: 600; }
+        .product-info-admin h4 { margin: 0; font-size: 1.1rem; color: var(--text-main); font-weight: 600; }
         .product-info-admin p { margin: 0.25rem 0 0; font-size: 0.85rem; color: var(--text-dim); }
         .wa-icon {
           background: #25d366;
@@ -904,13 +891,12 @@ export default function AdminDashboard() {
         .delete-btn { background: rgba(239, 68, 68, 0.1); color: var(--danger); }
         .delete-btn:hover { background: var(--danger); color: white; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(239,68,68,0.3); }
         .glass {
-          background: var(--glass-bg);
-          backdrop-filter: blur(16px);
-          -webkit-backdrop-filter: blur(16px);
+          background: white;
           padding: 2rem;
           border-radius: 24px;
-          box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
-          border: 1px solid var(--glass-border);
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+          border: 1px solid #e2e8f0;
+          color: var(--text-main);
         }
         .list-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; }
         .list-header h3 { font-size: 1.4rem; font-weight: 700; }
@@ -918,8 +904,8 @@ export default function AdminDashboard() {
         .btn-text:hover { color: #60a5fa; }
         table { width: 100%; border-collapse: separate; border-spacing: 0; }
         th { text-align: left; padding: 1.25rem 1rem; color: var(--text-dim); font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid var(--glass-border); }
-        td { padding: 1.25rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.03); font-size: 0.95rem; }
-        tr:hover td { background: rgba(255, 255, 255, 0.02); }
+        td { padding: 1.25rem 1rem; border-bottom: 1px solid #f1f5f9; font-size: 0.95rem; }
+        tr:hover td { background: #f8fafc; }
         .status-pill { padding: 0.5rem 1rem; border-radius: 50px; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.5px; border: 1px solid transparent; }
         .status-pill.pending { background: rgba(245, 158, 11, 0.1); color: var(--warning); border-color: rgba(245,158,11,0.2); }
         .status-pill.completed { background: rgba(16, 185, 129, 0.1); color: var(--success); border-color: rgba(16,185,129,0.2); }
@@ -962,11 +948,11 @@ export default function AdminDashboard() {
           gap: 1.5rem;
           padding: 1.5rem;
           border-radius: 20px;
-          background: rgba(255,255,255,0.02);
-          border: 1px solid var(--glass-border);
+          background: white;
+          border: 1px solid #e2e8f0;
           transition: all 0.3s;
         }
-        .notification-item:hover { transform: translateX(5px); background: rgba(255,255,255,0.05); }
+        .notification-item:hover { transform: translateX(5px); background: #f8fafc; }
         .notification-item.unread { border-left: 4px solid var(--danger); background: rgba(239,68,68,0.05); }
         .icon-box { width: 48px; height: 48px; border-radius: 14px; background: rgba(239,68,68,0.15); color: var(--danger); display: flex; align-items: center; justify-content: center; border: 1px solid rgba(239,68,68,0.2); box-shadow: 0 0 15px rgba(239,68,68,0.2); }
         .notif-content { flex: 1; }
@@ -978,8 +964,8 @@ export default function AdminDashboard() {
         .stock-badge { background: rgba(96, 165, 250, 0.15); padding: 4px 10px; border-radius: 6px; font-size: 0.8rem; color: #60a5fa; display: inline-block; margin-top: 8px; font-weight: 700; border: 1px solid rgba(96, 165, 250, 0.2); }
         .btn-primary { background: linear-gradient(135deg, #2563eb, #3b82f6); color: white; border: none; border-radius: 12px; padding: 1rem; font-weight: 700; cursor: pointer; transition: all 0.3s; box-shadow: 0 4px 15px rgba(37,99,235,0.4); }
         .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(37,99,235,0.5); }
-        .btn-outline { background: transparent; color: white; border: 1px solid var(--glass-border); border-radius: 12px; padding: 1rem; font-weight: 700; cursor: pointer; transition: all 0.3s; }
-        .btn-outline:hover { background: rgba(255,255,255,0.05); }
+        .btn-outline { background: white; color: var(--text-main); border: 1px solid #e2e8f0; border-radius: 12px; padding: 1rem; font-weight: 700; cursor: pointer; transition: all 0.3s; }
+        .btn-outline:hover { background: #f8fafc; border-color: #cbd5e1; }
 
         /* ===== ADMIN RESPONSIVE ===== */
         @media (max-width: 1024px) {

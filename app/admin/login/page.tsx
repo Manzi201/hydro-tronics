@@ -77,7 +77,7 @@ export default function AdminLogin() {
           display: flex;
           align-items: center;
           justify-content: center;
-          background: #000c1a;
+          background: #f8fafc;
           position: relative;
           overflow: hidden;
         }
@@ -87,17 +87,16 @@ export default function AdminLogin() {
           bottom: -150px;
           z-index: 0;
           pointer-events: none;
-          filter: grayscale(1) opacity(0.06);
+          filter: grayscale(1) opacity(0.08);
         }
         .login-card {
           width: 100%;
           max-width: 450px;
           padding: 3.5rem;
-          background: rgba(255, 255, 255, 0.03);
-          backdrop-filter: blur(20px);
+          background: white;
           border-radius: 32px;
-          box-shadow: 0 40px 100px rgba(0, 0, 0, 0.4);
-          border: 1px solid rgba(255, 255, 255, 0.1);
+          box-shadow: 0 40px 100px rgba(0, 0, 0, 0.05);
+          border: 1px solid #e2e8f0;
           position: relative;
           z-index: 1;
         }
@@ -110,10 +109,10 @@ export default function AdminLogin() {
           font-size: 2rem;
           font-weight: 800;
           letter-spacing: -1px;
-          color: white;
+          color: #1e293b;
         }
         .login-header p {
-          color: rgba(255, 255, 255, 0.6);
+          color: #64748b;
           font-size: 1rem;
           margin-top: 0.5rem;
         }
@@ -143,24 +142,24 @@ export default function AdminLogin() {
           display: flex;
           align-items: center;
           gap: 0.5rem;
-          color: rgba(255, 255, 255, 0.7);
+          color: #64748b;
           text-transform: uppercase;
           letter-spacing: 0.5px;
         }
         input {
           padding: 1.1rem;
-          border: 1px solid rgba(255, 255, 255, 0.1);
+          border: 1px solid #e2e8f0;
           border-radius: 14px;
           font-size: 1rem;
           transition: all 0.3s;
-          background: rgba(255, 255, 255, 0.05);
-          color: white;
+          background: #f8fafc;
+          color: #1e293b;
         }
         input:focus {
           outline: none;
-          border-color: var(--primary);
-          background: rgba(255, 255, 255, 0.08);
-          box-shadow: 0 0 0 4px rgba(0, 115, 230, 0.1);
+          border-color: #2563eb;
+          background: white;
+          box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.05);
         }
         .w-full { width: 100%; }
         .mr-2 { margin-right: 0.5rem; }
