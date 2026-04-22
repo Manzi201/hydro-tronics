@@ -5,37 +5,20 @@ import { useState, useEffect, useRef } from "react";
 import { supabase } from "@/lib/supabase";
 import Image from "next/image";
 
-const works: ProjectItem[] = [
-  {
-    id: "w1",
-    title: "Eco-Residential Hub",
-    category: "Modern Plumbing",
-    description: "Full-scale water management for a 20-unit sustainable housing project.",
-    image_url: "/portfolio-1.png",
-    price: "Project Consult"
-  },
-  {
-    id: "w2",
-    title: "Industrial Pressure Plant",
-    category: "Engineering",
-    description: "High-pressure valve and pipe synchronization for a chemical processing facility.",
-    image_url: "/portfolio-2.png",
-    price: "Project Consult"
-  }
-];
-
+// Types for our data
 interface ProjectItem {
   id: string;
   title: string;
   category: string;
   description: string;
   image_url: string;
-  price: string;
+  price?: string;
   stock_quantity?: number;
 }
 
 export default function Portfolio() {
   const [products, setProducts] = useState<ProjectItem[]>([]);
+  const [flagshipProjects, setFlagshipProjects] = useState<ProjectItem[]>([]);
   const [selectedItem, setSelectedItem] = useState<ProjectItem | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
@@ -114,16 +97,16 @@ export default function Portfolio() {
   }, [products]);
 
   useEffect(() => {
-    async function fetchProducts() {
-      const { data, error } = await supabase
+    async function fetchData() {
+      // Fetch Products
+      const { data: productsData, error: productsError } = await supabase
         .from('products')
         .select('*')
         .order('created_at', { ascending: false });
       
-      if (error) {
-        console.error("Error fetching products:", error);
-      } else if (data) {
-        const processed: ProjectItem[] = data.map(p => ({
+      if (productsError) console.error("Error fetching products:", productsError);
+      else if (productsData) {
+        setProducts(productsData.map(p => ({
           id: p.id,
           title: p.title || "Untitled Product",
           category: p.category || "General",
@@ -131,12 +114,29 @@ export default function Portfolio() {
           image_url: p.image_url || "/product-1.png",
           price: p.price || "Contact for price",
           stock_quantity: p.stock_quantity || 0
-        }));
-        setProducts(processed);
+        })));
+      }
+
+      // Fetch Flagship Projects
+      const { data: projectsData, error: projectsError } = await supabase
+        .from('projects')
+        .select('*')
+        .order('created_at', { ascending: false });
+
+      if (projectsError) console.error("Error fetching projects:", projectsError);
+      else if (projectsData) {
+        setFlagshipProjects(projectsData.map(p => ({
+          id: p.id,
+          title: p.title,
+          category: p.category || "Engineering",
+          description: p.description || "",
+          image_url: p.image_url || "/portfolio-1.png",
+          price: "Project Consult"
+        })));
       }
     }
 
-    fetchProducts();
+    fetchData();
   }, []);
 
   return (
@@ -149,7 +149,7 @@ export default function Portfolio() {
 
         <h3 className="sub-title">Flagship Projects</h3>
         <div className="grid portfolio-grid">
-          {works.map((item, i) => (
+          {flagshipProjects.map((item, i) => (
             <div key={i} className="card portfolio-card">
               <div className="card-image">
                 <Image className="card-img-element" src={item.image_url} alt={item.title} width={600} height={400} />
@@ -169,6 +169,11 @@ export default function Portfolio() {
               </div>
             </div>
           ))}
+          {flagshipProjects.length === 0 && (
+            <div className="empty-state">
+               <p>Our portfolio is coming soon. Stay tuned!</p>
+            </div>
+          )}
         </div>
 
         <h3 className="sub-title mt-20">Premium Products</h3>
