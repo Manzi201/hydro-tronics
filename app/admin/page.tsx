@@ -368,7 +368,13 @@ export default function AdminDashboard() {
                       <td className="font-bold">
                         <div className="flex items-center gap-2">
                            {c.products?.image_url && (
-                             <img src={c.products.image_url} alt="" className="mini-thumb" />
+                             <Image 
+                               src={c.products.image_url} 
+                               alt="" 
+                               className="mini-thumb" 
+                               width={38} 
+                               height={38} 
+                             />
                            )}
                            {c.client_name}
                         </div>
@@ -582,7 +588,13 @@ export default function AdminDashboard() {
                         <div className="flex items-center gap-2">
                           {c.project_type === "WhatsApp Order" && <span className="wa-icon">WA</span>}
                           {c.products?.image_url && (
-                            <img src={c.products.image_url} alt="" className="mini-thumb" />
+                            <Image 
+                              src={c.products.image_url} 
+                              alt="" 
+                              className="mini-thumb" 
+                              width={38} 
+                              height={38} 
+                            />
                           )}
                           {c.client_name}
                         </div>
