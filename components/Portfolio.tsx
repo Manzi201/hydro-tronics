@@ -195,39 +195,30 @@ export default function Portfolio() {
           
           <div className="product-grid" ref={scrollRef}>
             {products.map((item, i) => (
-              <div key={i} className="premium-product-card">
-                <div className="product-visual-container">
-                  <div className="floating-blur"></div>
+              <div key={i} className="classic-product-card">
+                <div className="classic-card-image">
                   <Image 
-                    className="product-main-image"
+                    className="main-img zoom-target"
                     src={item.image_url || '/product-1.png'}
                     alt={item.title}
                     width={600}
                     height={400}
                   />
-                  <div className="product-status-badges">
-                    <span className="badge-item trending">Trending</span>
-                    {item.stock_quantity !== undefined && item.stock_quantity < 5 && item.stock_quantity > 0 && (
-                      <span className="badge-item limited">Limited</span>
-                    )}
-                  </div>
                 </div>
-
-                <div className="product-info-overlay">
-                  <div className="info-top">
-                    <span className="info-cat">{item.category}</span>
-                    <h3>{item.title}</h3>
-                  </div>
-                  
-                  <div className="info-bottom">
-                    <div className="price-box">
-                      <span className="price-label">Price</span>
-                      <span className="price-value">{item.price}</span>
-                    </div>
-                    
-                    <div className="actions-wrapper">
+                <div className="classic-card-body">
+                   <div className="price-row">
+                      <span className="classic-price">{item.price}</span>
+                   </div>
+                   <div className="stock-row">
+                      {item.stock_quantity !== undefined && (
+                        <span className={`classic-stock ${item.stock_quantity > 0 ? 'in' : 'out'}`}>
+                          {item.stock_quantity > 0 ? `${item.stock_quantity} in stock` : 'Out of Stock'}
+                        </span>
+                      )}
+                   </div>
+                   <div className="classic-actions">
                       <button 
-                        className="btn-glow" 
+                        className="classic-btn-order" 
                         disabled={item.stock_quantity !== undefined && item.stock_quantity <= 0}
                         onClick={() => {
                           const origin = window.location.origin;
@@ -237,13 +228,12 @@ export default function Portfolio() {
                           window.open(`https://wa.me/250780592673?text=${message}`, '_blank');
                         }}
                       >
-                        {item.stock_quantity !== undefined && item.stock_quantity <= 0 ? 'Out of Stock' : 'Order Now'}
+                        Order
                       </button>
-                      <button className="btn-details-minimal" onClick={() => setSelectedItem(item)}>
-                        Explore <ArrowRight size={14} />
+                      <button className="classic-btn-details" onClick={() => setSelectedItem(item)}>
+                        Details
                       </button>
-                    </div>
-                  </div>
+                   </div>
                 </div>
               </div>
             ))}
@@ -387,166 +377,91 @@ export default function Portfolio() {
         }
         .product-grid::-webkit-scrollbar { display: none; }
 
-        .premium-product-card {
-          min-width: 310px;
+        .classic-product-card {
+          min-width: 320px;
           flex: 0 0 auto;
           background: white;
-          border-radius: 28px;
-          position: relative;
+          border-radius: 20px;
           overflow: hidden;
-          box-shadow: 0 15px 35px rgba(0,0,0,0.05);
-          transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-          border: 1px solid rgba(0,0,0,0.03);
+          box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+          border: 1px solid #f1f5f9;
           scroll-snap-align: start;
+          transition: transform 0.3s ease;
         }
 
-        .premium-product-card:hover {
-          transform: translateY(-15px);
-          box-shadow: 0 40px 80px rgba(0,0,0,0.12);
-          border-color: var(--primary);
-        }
-
-        .product-visual-container {
-          height: 260px;
-          background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-          position: relative;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          padding: 1.5rem;
+        .classic-card-image {
+          height: 240px;
           overflow: hidden;
+          background: #f8fafc;
+          position: relative;
         }
 
-        .floating-blur {
-          position: absolute;
-          width: 150px;
-          height: 150px;
-          background: var(--primary);
-          filter: blur(80px);
-          opacity: 0.15;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          z-index: 1;
-        }
-
-        .product-main-image {
+        .zoom-target {
           width: 100%;
           height: 100%;
-          object-fit: contain;
-          z-index: 2;
-          transition: transform 0.6s ease;
+          object-fit: cover;
+          transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .premium-product-card:hover .product-main-image {
-          transform: scale(1.1) rotate(-3deg);
+        .classic-product-card:hover .zoom-target {
+          transform: scale(1.15);
         }
 
-        .product-status-badges {
-          position: absolute;
-          top: 1.5rem;
-          left: 1.5rem;
-          display: flex;
-          flex-direction: column;
-          gap: 0.5rem;
-          z-index: 3;
-        }
-
-        .badge-item {
-          padding: 0.4rem 0.8rem;
-          border-radius: 50px;
-          font-size: 0.7rem;
-          font-weight: 800;
-          text-transform: uppercase;
-          letter-spacing: 0.5px;
-        }
-
-        .badge-item.trending { background: white; color: #111; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
-        .badge-item.limited { background: #fee2e2; color: #ef4444; }
-
-        .product-info-overlay {
+        .classic-card-body {
           padding: 1.5rem;
-          background: white;
         }
 
-        .info-cat {
-          color: var(--primary);
+        .classic-price {
+          font-size: 1.25rem;
           font-weight: 800;
-          font-size: 0.75rem;
-          text-transform: uppercase;
-          letter-spacing: 2px;
+          color: var(--primary);
           display: block;
-          margin-bottom: 0.75rem;
-        }
-
-        .info-top h3 {
-          font-size: 1.3rem;
-          font-weight: 900;
-          color: #111;
-          margin-bottom: 1.25rem;
-        }
-
-        .info-bottom {
-          display: flex;
-          justify-content: space-between;
-          align-items: flex-end;
-          border-top: 1px solid #f1f5f9;
-          padding-top: 1.25rem;
-        }
-
-        .price-label {
-          display: block;
-          font-size: 0.75rem;
-          color: #64748b;
-          font-weight: 600;
           margin-bottom: 0.25rem;
         }
 
-        .price-value {
-          font-size: 1.2rem;
-          font-weight: 800;
-          color: var(--primary);
+        .classic-stock {
+          font-size: 0.8rem;
+          font-weight: 700;
+          padding: 3px 10px;
+          border-radius: 4px;
+          display: inline-block;
+          margin-bottom: 1.5rem;
         }
 
-        .actions-wrapper {
+        .classic-stock.in { background: #e0f2fe; color: #0369a1; }
+        .classic-stock.out { background: #fee2e2; color: #ef4444; }
+
+        .classic-actions {
           display: flex;
-          flex-direction: column;
-          gap: 0.75rem;
-          align-items: flex-end;
+          align-items: center;
+          justify-content: space-between;
+          gap: 1rem;
         }
 
-        .btn-glow {
+        .classic-btn-order {
           background: var(--primary);
           color: white;
           border: none;
-          padding: 0.8rem 1.8rem;
-          border-radius: 12px;
+          padding: 0.6rem 1.5rem;
+          border-radius: 8px;
           font-weight: 700;
           cursor: pointer;
-          transition: all 0.3s;
-          box-shadow: 0 10px 20px rgba(var(--primary-rgb), 0.3);
+          flex: 1;
+          transition: background 0.3s;
         }
 
-        .btn-glow:hover:not(:disabled) {
-          transform: translateY(-3px);
-          box-shadow: 0 15px 30px rgba(var(--primary-rgb), 0.5);
-          background: #0ea5e9;
-        }
+        .classic-btn-order:hover:not(:disabled) { background: var(--primary-light); }
 
-        .btn-details-minimal {
+        .classic-btn-details {
           background: none;
           border: none;
-          color: #64748b;
+          color: var(--primary);
           font-weight: 700;
-          font-size: 0.85rem;
-          display: flex;
-          align-items: center;
-          gap: 0.4rem;
           cursor: pointer;
-          transition: color 0.3s;
+          transition: opacity 0.3s;
         }
 
-        .btn-details-minimal:hover { color: var(--primary); }
+        .classic-btn-details:hover { opacity: 0.7; }
         
         @media (max-width: 868px) {
           .carousel-btn { display: none; }
