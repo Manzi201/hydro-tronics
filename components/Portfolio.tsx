@@ -401,12 +401,8 @@ export default function Portfolio() {
           height: 100%;
           object-fit: contain;
           padding: 0.5rem;
-          transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .classic-product-card:hover .zoom-target {
-          transform: scale(1.15);
-        }
 
         .classic-card-body {
           padding: 1.5rem;
@@ -634,12 +630,7 @@ export default function Portfolio() {
           height: 100%;
           width: 100%;
           object-fit: contain;
-          transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-          cursor: zoom-in;
           display: block;
-        }
-        .zoom-image:hover {
-          transform: scale(1.35);
         }
         .modal-text {
           padding: 3.5rem;
