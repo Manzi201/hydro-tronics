@@ -196,6 +196,9 @@ export default function Portfolio() {
           <div className="product-grid" ref={scrollRef}>
             {products.map((item, i) => (
               <div key={i} className="classic-product-card">
+                <div className="classic-card-header">
+                  <h3 className="classic-product-title">{item.title}</h3>
+                </div>
                 <div className="classic-card-image">
                   <Image 
                     className="main-img"
@@ -385,6 +388,19 @@ export default function Portfolio() {
           border: 1px solid #f1f5f9;
           scroll-snap-align: start;
           transition: transform 0.3s ease;
+          display: flex;
+          flex-direction: column;
+        }
+
+        .classic-card-header {
+          padding: 1.5rem 1.5rem 0.5rem;
+        }
+
+        .classic-product-title {
+          font-size: 1.5rem;
+          font-weight: 800;
+          color: #111;
+          margin: 0;
         }
 
         .classic-card-image {
