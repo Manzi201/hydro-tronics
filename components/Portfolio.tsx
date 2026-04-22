@@ -388,13 +388,13 @@ export default function Portfolio() {
         .product-grid::-webkit-scrollbar { display: none; }
 
         .premium-product-card {
-          min-width: 380px;
+          min-width: 310px;
           flex: 0 0 auto;
           background: white;
-          border-radius: 32px;
+          border-radius: 28px;
           position: relative;
           overflow: hidden;
-          box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+          box-shadow: 0 15px 35px rgba(0,0,0,0.05);
           transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
           border: 1px solid rgba(0,0,0,0.03);
           scroll-snap-align: start;
@@ -407,13 +407,13 @@ export default function Portfolio() {
         }
 
         .product-visual-container {
-          height: 320px;
+          height: 260px;
           background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
           position: relative;
           display: flex;
           align-items: center;
           justify-content: center;
-          padding: 2.5rem;
+          padding: 1.5rem;
           overflow: hidden;
         }
 
@@ -465,7 +465,7 @@ export default function Portfolio() {
         .badge-item.limited { background: #fee2e2; color: #ef4444; }
 
         .product-info-overlay {
-          padding: 2.5rem;
+          padding: 1.5rem;
           background: white;
         }
 
@@ -480,10 +480,10 @@ export default function Portfolio() {
         }
 
         .info-top h3 {
-          font-size: 1.6rem;
+          font-size: 1.3rem;
           font-weight: 900;
           color: #111;
-          margin-bottom: 1.5rem;
+          margin-bottom: 1.25rem;
         }
 
         .info-bottom {
@@ -491,7 +491,7 @@ export default function Portfolio() {
           justify-content: space-between;
           align-items: flex-end;
           border-top: 1px solid #f1f5f9;
-          padding-top: 1.5rem;
+          padding-top: 1.25rem;
         }
 
         .price-label {
@@ -503,7 +503,7 @@ export default function Portfolio() {
         }
 
         .price-value {
-          font-size: 1.4rem;
+          font-size: 1.2rem;
           font-weight: 800;
           color: var(--primary);
         }
