@@ -43,6 +43,10 @@ interface Consultation {
   email: string;
   message: string;
   product_id?: string;
+  products?: {
+    image_url: string;
+    title: string;
+  }
 }
 
 export default function AdminDashboard() {
@@ -87,11 +91,11 @@ export default function AdminDashboard() {
   async function fetchConsultations() {
     const { data, error } = await supabase
       .from('consultations')
-      .select('*')
+      .select('*, products(image_url, title)')
       .order('created_at', { ascending: false });
     
     if (error) console.error("Error fetching consultations:", error);
-    if (data) setConsultations(data);
+    if (data) setConsultations(data as any);
   }
 
   const stats = {
@@ -361,7 +365,14 @@ export default function AdminDashboard() {
                   {consultations.map(c => (
                     <tr key={c.id}>
                       <td>#{c.id.substring(0, 4)}</td>
-                      <td className="font-bold">{c.client_name}</td>
+                      <td className="font-bold">
+                        <div className="flex items-center gap-2">
+                           {c.products?.image_url && (
+                             <img src={c.products.image_url} alt="" className="mini-thumb" />
+                           )}
+                           {c.client_name}
+                        </div>
+                      </td>
                       <td>{c.project_type}</td>
                       <td>{new Date(c.created_at).toLocaleDateString()}</td>
                       <td><span className={`status-pill ${c.status.toLowerCase().replace(' ', '-')}`}>{c.status}</span></td>
@@ -570,6 +581,9 @@ export default function AdminDashboard() {
                       <td className="font-bold">
                         <div className="flex items-center gap-2">
                           {c.project_type === "WhatsApp Order" && <span className="wa-icon">WA</span>}
+                          {c.products?.image_url && (
+                            <img src={c.products.image_url} alt="" className="mini-thumb" />
+                          )}
                           {c.client_name}
                         </div>
                       </td>
@@ -621,6 +635,15 @@ export default function AdminDashboard() {
           --danger: #ef4444;
           --success: #10b981;
           --warning: #f59e0b;
+          --sidebar-bg: #0f172a;
+        }
+        .mini-thumb {
+          width: 38px;
+          height: 38px;
+          border-radius: 8px;
+          object-fit: cover;
+          border: 1px solid #e2e8f0;
+          background: #f8fafc;
         }
         .admin-container {
           display: flex;

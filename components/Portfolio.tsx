@@ -74,8 +74,10 @@ export default function Portfolio() {
 
   const trackOrder = async (title: string, price: string, productId?: string) => {
     try {
+      const userContact = window.prompt("To help us track your order, please enter your Name or Phone Number:") || "WhatsApp Client";
+      
       await supabase.from('consultations').insert([{
-        client_name: "WhatsApp Client",
+        client_name: userContact,
         email: "whatsapp-inquiry@hydro-tronics.com",
         project_type: "WhatsApp Order",
         message: `Ordered: ${title} (${price})`,
