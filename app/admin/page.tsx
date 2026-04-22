@@ -647,7 +647,7 @@ export default function AdminDashboard() {
           --danger: #ef4444;
           --success: #10b981;
           --warning: #f59e0b;
-          --sidebar-bg: #0f172a;
+          --sidebar-bg: #ffffff;
         }
         .mini-thumb {
           width: 38px;
@@ -670,27 +670,24 @@ export default function AdminDashboard() {
         }
         .sidebar {
           width: 280px;
-          background: #0f172a;
-          border-right: 1px solid rgba(255, 255, 255, 0.05);
-          color: white;
-          padding: 2rem 1.5rem;
+          background: #ffffff;
+          border-right: 1px solid #e2e8f0;
+          color: #1e293b;
+          padding: 2.5rem 1.75rem;
           display: flex;
           flex-direction: column;
           position: relative;
           z-index: 20;
-          box-shadow: 10px 0 30px rgba(0, 0, 0, 0.05);
+          box-shadow: 4px 0 15px rgba(0, 0, 0, 0.02);
         }
         .brand {
           display: flex;
           align-items: center;
-          gap: 1rem;
-          font-size: 1.5rem;
+          gap: 0.75rem;
+          font-size: 1.4rem;
           font-weight: 800;
-          margin-bottom: 3rem;
-          padding-left: 0.5rem;
-          background: linear-gradient(135deg, #fff, #94a3b8);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
+          margin-bottom: 3.5rem;
+          color: var(--accent-blue);
         }
         .side-nav {
           display: flex;
@@ -702,26 +699,24 @@ export default function AdminDashboard() {
           align-items: center;
           gap: 1rem;
           padding: 1rem 1.25rem;
-          color: #94a3b8;
-          border-radius: 16px;
-          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+          color: #64748b;
+          border-radius: 12px;
+          transition: all 0.2s ease;
           background: transparent;
-          border: 1px solid transparent;
+          border: none;
           width: 100%;
           cursor: pointer;
-          font-size: 1rem;
+          font-size: 0.95rem;
           font-weight: 600;
         }
         .side-nav button:hover {
-          color: white;
-          background: rgba(255, 255, 255, 0.03);
-          transform: translateX(4px);
+          color: var(--accent-blue);
+          background: #f1f5f9;
         }
         .side-nav button.active {
-          background: linear-gradient(90deg, rgba(59, 130, 246, 0.15), transparent);
-          border-left: 3px solid var(--accent-blue);
-          color: white;
-          border-radius: 0 16px 16px 0;
+          background: #eff6ff;
+          color: var(--accent-blue);
+          border-left: 4px solid var(--accent-blue);
         }
         .main-content {
           flex: 1;

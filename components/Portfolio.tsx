@@ -195,32 +195,30 @@ export default function Portfolio() {
           
           <div className="product-grid" ref={scrollRef}>
             {products.map((item, i) => (
-              <div key={i} className="refined-card">
-                <div className="card-media">
+              <div key={i} className="classic-product-card">
+                <div className="classic-card-image">
                   <Image 
-                    className="media-img"
+                    className="main-img"
                     src={item.image_url || '/product-1.png'}
                     alt={item.title}
                     width={600}
                     height={400}
                   />
-                  {item.stock_quantity !== undefined && (
-                    <div className={`status-pill ${item.stock_quantity > 0 ? 'in' : 'out'}`}>
-                      <span className="dot"></span>
-                      {item.stock_quantity > 0 ? 'In Stock' : 'Out of Stock'}
-                    </div>
-                  )}
                 </div>
-                
-                <div className="card-content">
-                   <div className="content-top">
-                      <h3 className="product-name">{item.title}</h3>
-                      <span className="product-price">{item.price}</span>
+                <div className="classic-card-body">
+                   <div className="price-row">
+                      <span className="classic-price">{item.price}</span>
                    </div>
-                   
-                   <div className="content-bottom">
+                   <div className="stock-row">
+                      {item.stock_quantity !== undefined && (
+                        <span className={`classic-stock ${item.stock_quantity > 0 ? 'in' : 'out'}`}>
+                          {item.stock_quantity > 0 ? `${item.stock_quantity} in stock` : 'Out of Stock'}
+                        </span>
+                      )}
+                   </div>
+                   <div className="classic-actions">
                       <button 
-                        className="btn-order-modern" 
+                        className="classic-btn-order" 
                         disabled={item.stock_quantity !== undefined && item.stock_quantity <= 0}
                         onClick={() => {
                           const origin = window.location.origin;
@@ -230,10 +228,10 @@ export default function Portfolio() {
                           window.open(`https://wa.me/250780592673?text=${message}`, '_blank');
                         }}
                       >
-                        Order Now
+                        Order
                       </button>
-                      <button className="btn-explore-circle" onClick={() => setSelectedItem(item)} title="View Details">
-                        <ArrowRight size={18} />
+                      <button className="classic-btn-details" onClick={() => setSelectedItem(item)}>
+                        Details
                       </button>
                    </div>
                 </div>
@@ -377,135 +375,86 @@ export default function Portfolio() {
           scroll-snap-type: x mandatory;
           width: 100%;
         }
-        .product-grid::-webkit-scrollbar { display: none; }
-
-        .refined-card {
-          min-width: 290px;
+        .classic-product-card {
+          min-width: 275px;
           flex: 0 0 auto;
           background: white;
-          border-radius: 24px;
-          box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+          border-radius: 18px;
+          overflow: hidden;
+          box-shadow: 0 8px 20px rgba(0,0,0,0.05);
           border: 1px solid #f1f5f9;
           scroll-snap-align: start;
-          transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-          display: flex;
-          flex-direction: column;
+          transition: transform 0.3s ease;
         }
 
-        .refined-card:hover {
-          transform: translateY(-8px);
-          box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-          border-color: var(--primary);
-        }
-
-        .card-media {
-          height: 220px;
-          position: relative;
-          background: #f8fafc;
-          border-radius: 20px 20px 0 0;
+        .classic-card-image {
+          height: 200px;
           overflow: hidden;
-          padding: 1rem;
+          background: #f8fafc;
+          position: relative;
         }
 
-        .media-img {
-          width: 100%;
-          height: 100%;
-          object-fit: contain;
-        }
-
-        .status-pill {
-          position: absolute;
-          top: 1rem;
-          right: 1rem;
-          padding: 0.35rem 0.75rem;
-          background: white;
-          border-radius: 50px;
-          font-size: 0.65rem;
-          font-weight: 700;
-          text-transform: uppercase;
-          display: flex;
-          align-items: center;
-          gap: 0.4rem;
-          box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-        }
-
-        .status-pill.in { color: #059669; }
-        .status-pill.in .dot { background: #059669; box-shadow: 0 0 8px #10b981; }
-        .status-pill.out { color: #ef4444; }
-        .status-pill.out .dot { background: #ef4444; }
-
-        .status-pill .dot {
-          width: 6px;
-          height: 6px;
-          border-radius: 50%;
-        }
-
-        .card-content {
+        .classic-card-body {
           padding: 1.5rem;
-          display: flex;
-          flex-direction: column;
-          gap: 1.25rem;
-          flex: 1;
         }
 
-        .product-name {
-          font-size: 1.15rem;
+        .classic-price {
+          font-size: 1.25rem;
           font-weight: 800;
-          color: #111;
-          margin-bottom: 0.4rem;
-        }
-
-        .product-price {
-          font-size: 1.1rem;
-          font-weight: 700;
           color: var(--primary);
           display: block;
+          margin-bottom: 0.25rem;
         }
 
-        .content-bottom {
+        .classic-stock {
+          font-size: 0.8rem;
+          font-weight: 700;
+          padding: 3px 10px;
+          border-radius: 4px;
+          display: inline-block;
+          margin-bottom: 1.5rem;
+        }
+
+        .classic-stock.in { background: #e0f2fe; color: #0369a1; }
+        .classic-stock.out { background: #fee2e2; color: #ef4444; }
+
+        .classic-actions {
           display: flex;
           align-items: center;
           justify-content: space-between;
-          margin-top: auto;
+          gap: 1rem;
         }
 
-        .btn-order-modern {
+        .classic-btn-order {
           background: var(--primary);
           color: white;
           border: none;
-          padding: 0.75rem 1.5rem;
-          border-radius: 14px;
+          padding: 0.6rem 1.5rem;
+          border-radius: 8px;
           font-weight: 700;
-          font-size: 0.9rem;
           cursor: pointer;
-          transition: all 0.3s;
-          box-shadow: 0 4px 12px rgba(var(--primary-rgb), 0.2);
+          flex: 1;
+          transition: background 0.3s;
         }
 
-        .btn-order-modern:hover:not(:disabled) {
-          background: var(--primary-light);
-          transform: translateY(-2px);
-          box-shadow: 0 8px 20px rgba(var(--primary-rgb), 0.3);
-        }
+        .classic-btn-order:hover:not(:disabled) { background: var(--primary-light); }
 
-        .btn-explore-circle {
-          width: 42px;
-          height: 42px;
-          border-radius: 50%;
-          background: #f1f5f9;
+        .classic-btn-details {
+          background: none;
           border: none;
-          color: #64748b;
-          display: flex;
-          align-items: center;
-          justify-content: center;
+          color: var(--primary);
+          font-weight: 700;
           cursor: pointer;
-          transition: all 0.3s;
+          transition: opacity 0.3s;
         }
 
-        .btn-explore-circle:hover {
-          background: var(--primary);
-          color: white;
-          transform: rotate(-45deg);
+        .classic-btn-details:hover { opacity: 0.7; }
+
+        .main-img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+          padding: 0.5rem;
         }
         
         @media (max-width: 868px) {
