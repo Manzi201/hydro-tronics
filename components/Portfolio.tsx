@@ -405,18 +405,21 @@ export default function Portfolio() {
         }
 
         .classic-card-image {
-          height: 250px;
+          height: 300px;
           overflow: hidden;
           background: #f8fafc;
           position: relative;
           display: flex;
           align-items: center;
           justify-content: center;
+          padding: 1.5rem;
         }
 
         .main-img {
-          width: 90%;
-          height: 90%;
+          max-width: 100%;
+          max-height: 100%;
+          width: auto;
+          height: auto;
           object-fit: contain;
         }
 
