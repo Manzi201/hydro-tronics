@@ -209,33 +209,33 @@ export default function Portfolio() {
                   />
                 </div>
                 <div className="classic-card-body">
-                   <div className="price-row">
-                      <span className="classic-price">{item.price}</span>
-                   </div>
-                   <div className="stock-row">
-                      {item.stock_quantity !== undefined && (
-                        <span className={`classic-stock ${item.stock_quantity > 0 ? 'in' : 'out'}`}>
-                          {item.stock_quantity > 0 ? `${item.stock_quantity} in stock` : 'Out of Stock'}
-                        </span>
-                      )}
-                   </div>
-                   <div className="classic-actions">
-                      <button 
-                        className="classic-btn-order" 
-                        disabled={item.stock_quantity !== undefined && item.stock_quantity <= 0}
-                        onClick={() => {
-                          const origin = window.location.origin;
-                          const fullImageUrl = item.image_url.startsWith('http') ? item.image_url : `${origin}${item.image_url}`;
-                          trackOrder(item.title, item.price || "Contact for Price", item.id);
-                          const message = encodeURIComponent(`📸 *Product Photo:* ${fullImageUrl}\n\n*Product:* ${item.title}\n*Price:* ${item.price}\n\nHello Hydro-Tronics Eng, I'm interested in this product.`);
-                          window.open(`https://wa.me/250780592673?text=${message}`, '_blank');
-                        }}
-                      >
-                        Order
-                      </button>
-                      <button className="classic-btn-details" onClick={() => setSelectedItem(item)}>
-                        Details
-                      </button>
+                   <div className="footer-split">
+                      <div className="footer-left">
+                        <span className="classic-price">{item.price}</span>
+                        {item.stock_quantity !== undefined && (
+                          <span className={`classic-stock ${item.stock_quantity > 0 ? 'in' : 'out'}`}>
+                            {item.stock_quantity > 0 ? `${item.stock_quantity} in stock` : 'Out of Stock'}
+                          </span>
+                        )}
+                      </div>
+                      <div className="footer-right">
+                        <button 
+                          className="classic-btn-order" 
+                          disabled={item.stock_quantity !== undefined && item.stock_quantity <= 0}
+                          onClick={() => {
+                            const origin = window.location.origin;
+                            const fullImageUrl = item.image_url.startsWith('http') ? item.image_url : `${origin}${item.image_url}`;
+                            trackOrder(item.title, item.price || "Contact for Price", item.id);
+                            const message = encodeURIComponent(`📸 *Product Photo:* ${fullImageUrl}\n\n*Product:* ${item.title}\n*Price:* ${item.price}\n\nHello Hydro-Tronics Eng, I'm interested in this product.`);
+                            window.open(`https://wa.me/250780592673?text=${message}`, '_blank');
+                          }}
+                        >
+                          Order
+                        </button>
+                        <button className="classic-btn-details" onClick={() => setSelectedItem(item)}>
+                          Details
+                        </button>
+                      </div>
                    </div>
                 </div>
               </div>
@@ -421,33 +421,44 @@ export default function Portfolio() {
         }
 
         .classic-card-body {
-          padding: 1.5rem;
+          padding: 1.25rem 1.5rem 1.5rem;
+        }
+
+        .footer-split {
+          display: flex;
+          align-items: flex-end;
+          justify-content: space-between;
+          gap: 1rem;
+        }
+
+        .footer-left {
+          display: flex;
+          flex-direction: column;
+          gap: 0.4rem;
         }
 
         .classic-price {
-          font-size: 1.25rem;
+          font-size: 1.15rem;
           font-weight: 800;
           color: var(--primary);
           display: block;
-          margin-bottom: 0.25rem;
         }
 
         .classic-stock {
-          font-size: 0.8rem;
+          font-size: 0.7rem;
           font-weight: 700;
-          padding: 3px 10px;
+          padding: 3px 8px;
           border-radius: 4px;
           display: inline-block;
-          margin-bottom: 1.5rem;
+          width: fit-content;
         }
 
-        .classic-stock.in { background: #e0f2fe; color: #0369a1; }
+        .classic-stock.in { background: #e0fcf2; color: #059669; }
         .classic-stock.out { background: #fee2e2; color: #ef4444; }
 
-        .classic-actions {
+        .footer-right {
           display: flex;
           align-items: center;
-          justify-content: space-between;
           gap: 1rem;
         }
 
@@ -455,9 +466,10 @@ export default function Portfolio() {
           background: var(--primary);
           color: white;
           border: none;
-          padding: 0.6rem 1.8rem;
+          padding: 0.5rem 1.5rem;
           border-radius: 8px;
           font-weight: 700;
+          font-size: 0.9rem;
           cursor: pointer;
           transition: background 0.3s;
         }
@@ -469,6 +481,7 @@ export default function Portfolio() {
           border: none;
           color: var(--primary);
           font-weight: 700;
+          font-size: 0.9rem;
           cursor: pointer;
           transition: opacity 0.3s;
         }
