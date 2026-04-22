@@ -195,45 +195,54 @@ export default function Portfolio() {
           
           <div className="product-grid" ref={scrollRef}>
             {products.map((item, i) => (
-              <div key={i} className="card product-card-modern">
-                <div className="card-top">
-                  <span className="label">Frequently searched</span>
-                  <h3>{item.title}</h3>
-                </div>
-                <Image 
-                  className="card-image-main"
-                  src={item.image_url || '/product-1.png'}
-                  alt={item.title}
-                  width={600}
-                  height={400}
-                />
-                <div className="card-footer">
-                  <div className="price-info">
-                    <span className="price">{item.price}</span>
-                    {item.stock_quantity !== undefined && (
-                      <span className={`stock-tag ${item.stock_quantity > 0 ? 'in-stock' : 'out-of-stock'}`}>
-                        {item.stock_quantity > 0 ? `${item.stock_quantity} in stock` : 'Out of Stock'}
-                      </span>
+              <div key={i} className="premium-product-card">
+                <div className="product-visual-container">
+                  <div className="floating-blur"></div>
+                  <Image 
+                    className="product-main-image"
+                    src={item.image_url || '/product-1.png'}
+                    alt={item.title}
+                    width={600}
+                    height={400}
+                  />
+                  <div className="product-status-badges">
+                    <span className="badge-item trending">Trending</span>
+                    {item.stock_quantity !== undefined && item.stock_quantity < 5 && item.stock_quantity > 0 && (
+                      <span className="badge-item limited">Limited</span>
                     )}
                   </div>
-                  <div className="flex gap-2">
-                    <button 
-                      className="btn btn-primary btn-sm" 
-                      disabled={item.stock_quantity !== undefined && item.stock_quantity <= 0}
-                      onClick={() => {
-                        const origin = window.location.origin;
-                        const fullImageUrl = item.image_url.startsWith('http') ? item.image_url : `${origin}${item.image_url}`;
-                        trackOrder(item.title, item.price || "Contact for Price", item.id);
-                        // Clean message format for better WhatsApp preview
-                        const message = encodeURIComponent(`📸 *Product Photo:* ${fullImageUrl}\n\n*Product:* ${item.title}\n*Price:* ${item.price}\n\nHello Hydro-Tronics Eng, I'm interested in this product.`);
-                        window.open(`https://wa.me/250780592673?text=${message}`, '_blank');
-                      }}
-                    >
-                      {item.stock_quantity !== undefined && item.stock_quantity <= 0 ? 'Sold Out' : 'Order'}
-                    </button>
-                    <button className="btn btn-text btn-sm" onClick={() => setSelectedItem(item)}>
-                      Details
-                    </button>
+                </div>
+
+                <div className="product-info-overlay">
+                  <div className="info-top">
+                    <span className="info-cat">{item.category}</span>
+                    <h3>{item.title}</h3>
+                  </div>
+                  
+                  <div className="info-bottom">
+                    <div className="price-box">
+                      <span className="price-label">Price</span>
+                      <span className="price-value">{item.price}</span>
+                    </div>
+                    
+                    <div className="actions-wrapper">
+                      <button 
+                        className="btn-glow" 
+                        disabled={item.stock_quantity !== undefined && item.stock_quantity <= 0}
+                        onClick={() => {
+                          const origin = window.location.origin;
+                          const fullImageUrl = item.image_url.startsWith('http') ? item.image_url : `${origin}${item.image_url}`;
+                          trackOrder(item.title, item.price || "Contact for Price", item.id);
+                          const message = encodeURIComponent(`📸 *Product Photo:* ${fullImageUrl}\n\n*Product:* ${item.title}\n*Price:* ${item.price}\n\nHello Hydro-Tronics Eng, I'm interested in this product.`);
+                          window.open(`https://wa.me/250780592673?text=${message}`, '_blank');
+                        }}
+                      >
+                        {item.stock_quantity !== undefined && item.stock_quantity <= 0 ? 'Out of Stock' : 'Order Now'}
+                      </button>
+                      <button className="btn-details-minimal" onClick={() => setSelectedItem(item)}>
+                        Explore <ArrowRight size={14} />
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -370,56 +379,174 @@ export default function Portfolio() {
         .product-grid { 
           display: flex;
           overflow-x: auto;
-          gap: 2rem;
-          padding: 2rem 5px;
+          gap: 2.5rem;
+          padding: 3rem 10px;
           scrollbar-width: none;
           scroll-snap-type: x mandatory;
           width: 100%;
         }
         .product-grid::-webkit-scrollbar { display: none; }
 
-        .product-card-modern {
-          min-width: 400px;
+        .premium-product-card {
+          min-width: 380px;
           flex: 0 0 auto;
           background: white;
-          border-radius: 20px;
-          padding: 2rem;
-          display: flex;
-          flex-direction: column;
-          gap: 1.5rem;
+          border-radius: 32px;
+          position: relative;
+          overflow: hidden;
+          box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+          transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+          border: 1px solid rgba(0,0,0,0.03);
           scroll-snap-align: start;
         }
-        .card-top .label {
-          font-size: 0.85rem;
-          color: #666;
-          font-weight: 700;
-          display: block;
-          margin-bottom: 0.5rem;
+
+        .premium-product-card:hover {
+          transform: translateY(-15px);
+          box-shadow: 0 40px 80px rgba(0,0,0,0.12);
+          border-color: var(--primary);
         }
-        .card-top h3 {
-          font-size: 1.8rem;
-          font-weight: 900;
-          color: #111;
+
+        .product-visual-container {
+          height: 320px;
+          background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+          position: relative;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 2.5rem;
+          overflow: hidden;
         }
-        .card-img-element {
+
+        .floating-blur {
+          position: absolute;
+          width: 150px;
+          height: 150px;
+          background: var(--primary);
+          filter: blur(80px);
+          opacity: 0.15;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          z-index: 1;
+        }
+
+        .product-main-image {
           width: 100%;
           height: 100%;
-          object-fit: cover;
-          display: block;
-        }
-        .card-image-main {
-          height: 350px;
-          width: 100%;
           object-fit: contain;
-          background-color: #f8fafc;
-          border-radius: 12px;
-          display: block;
+          z-index: 2;
+          transition: transform 0.6s ease;
         }
-        .card-footer {
+
+        .premium-product-card:hover .product-main-image {
+          transform: scale(1.1) rotate(-3deg);
+        }
+
+        .product-status-badges {
+          position: absolute;
+          top: 1.5rem;
+          left: 1.5rem;
+          display: flex;
+          flex-direction: column;
+          gap: 0.5rem;
+          z-index: 3;
+        }
+
+        .badge-item {
+          padding: 0.4rem 0.8rem;
+          border-radius: 50px;
+          font-size: 0.7rem;
+          font-weight: 800;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+        }
+
+        .badge-item.trending { background: white; color: #111; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        .badge-item.limited { background: #fee2e2; color: #ef4444; }
+
+        .product-info-overlay {
+          padding: 2.5rem;
+          background: white;
+        }
+
+        .info-cat {
+          color: var(--primary);
+          font-weight: 800;
+          font-size: 0.75rem;
+          text-transform: uppercase;
+          letter-spacing: 2px;
+          display: block;
+          margin-bottom: 0.75rem;
+        }
+
+        .info-top h3 {
+          font-size: 1.6rem;
+          font-weight: 900;
+          color: #111;
+          margin-bottom: 1.5rem;
+        }
+
+        .info-bottom {
           display: flex;
           justify-content: space-between;
-          align-items: center;
+          align-items: flex-end;
+          border-top: 1px solid #f1f5f9;
+          padding-top: 1.5rem;
         }
+
+        .price-label {
+          display: block;
+          font-size: 0.75rem;
+          color: #64748b;
+          font-weight: 600;
+          margin-bottom: 0.25rem;
+        }
+
+        .price-value {
+          font-size: 1.4rem;
+          font-weight: 800;
+          color: var(--primary);
+        }
+
+        .actions-wrapper {
+          display: flex;
+          flex-direction: column;
+          gap: 0.75rem;
+          align-items: flex-end;
+        }
+
+        .btn-glow {
+          background: var(--primary);
+          color: white;
+          border: none;
+          padding: 0.8rem 1.8rem;
+          border-radius: 12px;
+          font-weight: 700;
+          cursor: pointer;
+          transition: all 0.3s;
+          box-shadow: 0 10px 20px rgba(var(--primary-rgb), 0.3);
+        }
+
+        .btn-glow:hover:not(:disabled) {
+          transform: translateY(-3px);
+          box-shadow: 0 15px 30px rgba(var(--primary-rgb), 0.5);
+          background: #0ea5e9;
+        }
+
+        .btn-details-minimal {
+          background: none;
+          border: none;
+          color: #64748b;
+          font-weight: 700;
+          font-size: 0.85rem;
+          display: flex;
+          align-items: center;
+          gap: 0.4rem;
+          cursor: pointer;
+          transition: color 0.3s;
+        }
+
+        .btn-details-minimal:hover { color: var(--primary); }
         
         @media (max-width: 868px) {
           .carousel-btn { display: none; }

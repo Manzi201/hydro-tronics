@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap');
 
 :root {
-  --primary: #004a99;
-  --primary-light: #0066cc;
+  --primary: #0284c7;
+  --primary-rgb: 2, 132, 199;
+  --primary-light: #0ea5e9;
   --secondary: #00a3e0;
   --accent: #f0f7ff;
   --text-dark: #1a1a1a;
