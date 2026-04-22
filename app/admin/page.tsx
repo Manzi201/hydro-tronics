@@ -95,7 +95,7 @@ export default function AdminDashboard() {
       .order('created_at', { ascending: false });
     
     if (error) console.error("Error fetching consultations:", error);
-    if (data) setConsultations(data as any);
+    if (data) setConsultations(data as unknown as Consultation[]);
   }
 
   const stats = {
