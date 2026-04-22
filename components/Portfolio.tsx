@@ -220,7 +220,7 @@ export default function Portfolio() {
                       onClick={() => {
                         const origin = window.location.origin;
                         const fullImageUrl = item.image_url.startsWith('http') ? item.image_url : `${origin}${item.image_url}`;
-                        trackOrder(item.title, item.price, item.id);
+                        trackOrder(item.title, item.price || "Contact for Price", item.id);
                         // Clean message format for better WhatsApp preview
                         const message = encodeURIComponent(`📸 *Product Photo:* ${fullImageUrl}\n\n*Product:* ${item.title}\n*Price:* ${item.price}\n\nHello Hydro-Tronics Eng, I'm interested in this product.`);
                         window.open(`https://wa.me/250780592673?text=${message}`, '_blank');
@@ -297,7 +297,7 @@ export default function Portfolio() {
                           onClick={() => {
                             const origin = window.location.origin;
                             const fullImageUrl = selectedItem.image_url.startsWith('http') ? selectedItem.image_url : `${origin}${selectedItem.image_url}`;
-                            trackOrder(selectedItem.title, selectedItem.price, selectedItem.id || "");
+                            trackOrder(selectedItem.title, selectedItem.price || "Contact for Price", selectedItem.id || "");
                             const message = encodeURIComponent(`📸 *Product Photo:* ${fullImageUrl}\n\n*Product:* ${selectedItem.title}\n*Price:* ${selectedItem.price}\n\nHello Hydro-Tronics Eng, I want to order this product.`);
                             window.open(`https://wa.me/250780592673?text=${message}`, '_blank');
                           }}
