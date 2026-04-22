@@ -74,10 +74,11 @@ export default function Portfolio() {
 
   const trackOrder = async (title: string, price: string, productId?: string) => {
     try {
-      const userContact = window.prompt("To help us track your order, please enter your Name or Phone Number:") || "WhatsApp Client";
+      const userContact = window.prompt("To help us track your order, please enter your Name or Phone Number:");
+      const clientIdentifier = userContact && userContact.trim() !== "" ? userContact : `Order: ${title}`;
       
       await supabase.from('consultations').insert([{
-        client_name: userContact,
+        client_name: clientIdentifier,
         email: "whatsapp-inquiry@hydro-tronics.com",
         project_type: "WhatsApp Order",
         message: `Ordered: ${title} (${price})`,
@@ -261,11 +262,11 @@ export default function Portfolio() {
               <div className="modal-body">
                 <div className="modal-image-container">
                     <Image 
-                      className="modal-image zoom-image" 
+                      className="zoom-image" 
                       src={selectedItem.image_url}
                       alt={selectedItem.title}
-                      width={800}
-                      height={800}
+                      width={1200} 
+                      height={1200}
                     />
                 </div>
                 <div className="modal-text">
@@ -590,11 +591,12 @@ export default function Portfolio() {
           height: 100%;
           width: 100%;
           object-fit: contain;
-          transition: transform 0.5s ease;
+          transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
           cursor: zoom-in;
+          display: block;
         }
         .zoom-image:hover {
-          transform: scale(1.5);
+          transform: scale(1.35);
         }
         .modal-text {
           padding: 3.5rem;
