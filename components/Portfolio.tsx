@@ -379,7 +379,8 @@ export default function Portfolio() {
           width: 100%;
         }
         .classic-product-card {
-          min-width: 275px;
+          width: 320px;
+          min-width: 260px;
           flex: 0 0 auto;
           background: white;
           border-radius: 18px;
@@ -404,10 +405,19 @@ export default function Portfolio() {
         }
 
         .classic-card-image {
-          height: 200px;
+          height: 250px;
           overflow: hidden;
           background: #f8fafc;
           position: relative;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .main-img {
+          width: 90%;
+          height: 90%;
+          object-fit: contain;
         }
 
         .classic-card-body {
@@ -445,11 +455,10 @@ export default function Portfolio() {
           background: var(--primary);
           color: white;
           border: none;
-          padding: 0.6rem 1.5rem;
+          padding: 0.6rem 1.8rem;
           border-radius: 8px;
           font-weight: 700;
           cursor: pointer;
-          flex: 1;
           transition: background 0.3s;
         }
 
