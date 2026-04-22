@@ -395,13 +395,17 @@ export default function Portfolio() {
 
         .classic-card-header {
           padding: 1.5rem 1.5rem 0.5rem;
+          min-height: 85px;
+          display: flex;
+          align-items: center;
         }
 
         .classic-product-title {
-          font-size: 1.5rem;
+          font-size: 1.35rem;
           font-weight: 800;
           color: #111;
           margin: 0;
+          line-height: 1.2;
         }
 
         .classic-card-image {
@@ -425,6 +429,10 @@ export default function Portfolio() {
 
         .classic-card-body {
           padding: 1.25rem 1.5rem 1.5rem;
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
         }
 
         .footer-split {
