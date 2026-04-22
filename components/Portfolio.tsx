@@ -369,8 +369,8 @@ export default function Portfolio() {
         .product-grid { 
           display: flex;
           overflow-x: auto;
-          gap: 2.5rem;
-          padding: 3rem 10px;
+          gap: 1.5rem;
+          padding: 2rem 5px;
           scrollbar-width: none;
           scroll-snap-type: x mandatory;
           width: 100%;
@@ -378,19 +378,19 @@ export default function Portfolio() {
         .product-grid::-webkit-scrollbar { display: none; }
 
         .classic-product-card {
-          min-width: 320px;
+          min-width: 275px;
           flex: 0 0 auto;
           background: white;
-          border-radius: 20px;
+          border-radius: 18px;
           overflow: hidden;
-          box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+          box-shadow: 0 8px 20px rgba(0,0,0,0.05);
           border: 1px solid #f1f5f9;
           scroll-snap-align: start;
           transition: transform 0.3s ease;
         }
 
         .classic-card-image {
-          height: 240px;
+          height: 200px;
           overflow: hidden;
           background: #f8fafc;
           position: relative;
