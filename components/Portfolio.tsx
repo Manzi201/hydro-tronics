@@ -3,6 +3,7 @@
 import { ArrowRight, Box, ShoppingCart, X, ChevronLeft, ChevronRight } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 import { supabase } from "@/lib/supabase";
+import Image from "next/image";
 
 const works: ProjectItem[] = [
   {
@@ -150,7 +151,8 @@ export default function Portfolio() {
         <div className="grid portfolio-grid">
           {works.map((item, i) => (
             <div key={i} className="card portfolio-card">
-              <div className="card-image" style={{ '--bg-image': `url(${item.image_url})` } as React.CSSProperties}>
+              <div className="card-image">
+                <Image className="card-img-element" src={item.image_url} alt={item.title} width={600} height={400} />
                 <div className="card-overlay">
                   <span className="cat">{item.category}</span>
                 </div>
@@ -190,12 +192,13 @@ export default function Portfolio() {
                   <span className="label">Frequently searched</span>
                   <h3>{item.title}</h3>
                 </div>
-                <div 
+                <Image 
                   className="card-image-main"
-                  style={{ 
-                    '--product-image': `url(${item.image_url || '/product-1.png'})`
-                  } as React.CSSProperties}
-                ></div>
+                  src={item.image_url || '/product-1.png'}
+                  alt={item.title}
+                  width={600}
+                  height={400}
+                />
                 <div className="card-footer">
                   <div className="price-info">
                     <span className="price">{item.price}</span>
@@ -250,10 +253,13 @@ export default function Portfolio() {
               </button>
               <div className="modal-body">
                 <div className="modal-image-container">
-                    <div 
+                    <Image 
                       className="modal-image zoom-image" 
-                      style={{ '--modal-bg': `url(${selectedItem.image_url})` } as React.CSSProperties}
-                    ></div>
+                      src={selectedItem.image_url}
+                      alt={selectedItem.title}
+                      width={800}
+                      height={800}
+                    />
                 </div>
                 <div className="modal-text">
                   <span className="cat">{selectedItem.category}</span>
@@ -387,15 +393,19 @@ export default function Portfolio() {
           font-weight: 900;
           color: #111;
         }
-        .card-image { background-image: var(--bg-image); }
+        .card-img-element {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+        }
         .card-image-main {
           height: 350px;
-          background-image: var(--product-image);
-          background-size: contain;
-          background-repeat: no-repeat;
-          background-position: center;
+          width: 100%;
+          object-fit: contain;
           background-color: #f8fafc;
           border-radius: 12px;
+          display: block;
         }
         .card-footer {
           display: flex;
@@ -421,8 +431,6 @@ export default function Portfolio() {
 
         .card-image { 
           height: 300px; 
-          background-size: cover; 
-          background-position: center; 
           position: relative;
         }
 
@@ -574,10 +582,7 @@ export default function Portfolio() {
         .zoom-image {
           height: 100%;
           width: 100%;
-          background-image: var(--modal-bg);
-          background-size: contain;
-          background-repeat: no-repeat;
-          background-position: center;
+          object-fit: contain;
           transition: transform 0.5s ease;
           cursor: zoom-in;
         }
