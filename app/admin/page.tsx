@@ -671,14 +671,14 @@ export default function AdminDashboard() {
         .sidebar {
           width: 280px;
           background: #ffffff;
-          border-right: 1px solid #e2e8f0;
+          border-right: 1px solid #f1f5f9;
           color: #1e293b;
-          padding: 2.5rem 1.75rem;
+          padding: 2.5rem 1.5rem;
           display: flex;
           flex-direction: column;
           position: relative;
           z-index: 20;
-          box-shadow: 4px 0 15px rgba(0, 0, 0, 0.02);
+          box-shadow: 10px 0 30px rgba(0, 0, 0, 0.02);
         }
         .brand {
           display: flex;
@@ -700,8 +700,8 @@ export default function AdminDashboard() {
           gap: 1rem;
           padding: 1rem 1.25rem;
           color: #64748b;
-          border-radius: 12px;
-          transition: all 0.2s ease;
+          border-radius: 16px;
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
           background: transparent;
           border: none;
           width: 100%;
@@ -711,12 +711,13 @@ export default function AdminDashboard() {
         }
         .side-nav button:hover {
           color: var(--accent-blue);
-          background: #f1f5f9;
+          background: #f8fafc;
+          transform: translateX(5px);
         }
         .side-nav button.active {
           background: #eff6ff;
           color: var(--accent-blue);
-          border-left: 4px solid var(--accent-blue);
+          box-shadow: inset 4px 0 0 var(--accent-blue);
         }
         .main-content {
           flex: 1;
@@ -803,33 +804,34 @@ export default function AdminDashboard() {
         }
         .stat-card {
           background: white;
-          padding: 2rem;
+          padding: 2.25rem;
+          border-radius: 32px;
+          display: flex;
+          align-items: center;
+          gap: 2rem;
+          border: 1px solid #f1f5f9;
+          transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+          cursor: default;
+          box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03);
+        }
+        .stat-card:hover {
+          transform: translateY(-10px) scale(1.02);
+          box-shadow: 0 25px 50px rgba(0, 0, 0, 0.07);
+          border-color: rgba(var(--primary-rgb), 0.2);
+        }
+        .icon {
+          width: 72px;
+          height: 72px;
           border-radius: 24px;
           display: flex;
           align-items: center;
-          gap: 1.5rem;
-          border: 1px solid #e2e8f0;
-          transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-          cursor: default;
-          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
-        }
-        .stat-card:hover {
-          transform: translateY(-8px);
-          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
-          border-color: var(--accent-blue);
-        }
-        .icon {
-          width: 64px;
-          height: 64px;
-          border-radius: 20px;
-          display: flex;
-          align-items: center;
           justify-content: center;
-          box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+          position: relative;
+          overflow: hidden;
         }
-        .icon.blue { background: linear-gradient(135deg, #2563eb, #60a5fa); color: white; }
-        .icon.orange { background: linear-gradient(135deg, #d97706, #fbbf24); color: white; }
-        .icon.green { background: linear-gradient(135deg, #059669, #34d399); color: white; }
+        .icon.blue { background: #eff6ff; color: #2563eb; }
+        .icon.orange { background: #fff7ed; color: #d97706; }
+        .icon.green { background: #f0fdf4; color: #059669; }
         .stat-card h3 { font-size: 2.2rem; font-weight: 800; margin: 0; }
         .stat-card p { font-size: 0.95rem; margin-bottom: 0.2rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1px; }
         .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }

@@ -262,13 +262,13 @@ export default function Portfolio() {
                 <X size={24} />
               </button>
               <div className="modal-body">
-                <div className="modal-image-container">
+                <div className="modal-image">
                     <Image 
                       className="zoom-image" 
                       src={selectedItem.image_url}
                       alt={selectedItem.title}
-                      width={1200} 
-                      height={1200}
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 50vw"
                     />
                 </div>
                 <div className="modal-text">
@@ -660,21 +660,18 @@ export default function Portfolio() {
           max-height: 85vh;
           overflow-y: auto;
         }
-        .modal-image-container {
+        .modal-image {
+          flex: 1;
+          height: 650px;
           position: relative;
-          overflow: hidden;
           background: #f8fafc;
-          height: 100%;
-          max-height: 600px;
           display: flex;
           align-items: center;
           justify-content: center;
+          padding: 2rem;
         }
         .zoom-image {
-          height: 100%;
-          width: 100%;
-          object-fit: contain;
-          display: block;
+          object-fit: contain !important;
         }
         .modal-text {
           padding: 3.5rem;
