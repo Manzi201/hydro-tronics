@@ -201,11 +201,11 @@ export default function Portfolio() {
                 </div>
                 <div className="classic-card-image">
                   <Image 
-                    className="main-img"
                     src={item.image_url || '/product-1.png'}
                     alt={item.title}
-                    width={600}
-                    height={400}
+                    fill
+                    className="main-img"
+                    sizes="(max-width: 768px) 100vw, 33vw"
                   />
                 </div>
                 <div className="classic-card-body">
@@ -409,21 +409,20 @@ export default function Portfolio() {
         }
 
         .classic-card-image {
-          height: 280px;
+          height: 330px;
           background: #f8fafc;
-          margin: 0 1.5rem;
-          border-radius: 12px;
+          margin: 0 1rem;
+          border-radius: 16px;
+          position: relative;
+          overflow: hidden;
           display: flex;
           align-items: center;
           justify-content: center;
-          padding: 1.5rem;
-          overflow: hidden;
         }
 
         .main-img {
-          width: 100%;
-          height: 100%;
-          object-fit: contain;
+          object-fit: contain !important;
+          padding: 1rem;
         }
 
         .classic-card-body {
