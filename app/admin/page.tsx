@@ -1021,38 +1021,63 @@ export default function AdminDashboard() {
         .btn-outline { background: white; color: var(--text-main); border: 1px solid #e2e8f0; border-radius: 12px; padding: 1rem; font-weight: 700; cursor: pointer; transition: all 0.3s; }
         .btn-outline:hover { background: #f8fafc; border-color: #cbd5e1; }
 
-        /* ===== ADMIN RESPONSIVE ===== */
-        @media (max-width: 1024px) {
-          .admin-container { flex-direction: column; }
-          .sidebar { width: 100%; flex-direction: row; align-items: center; justify-content: space-between; padding: 1rem 2rem; border-right: none; border-bottom: 1px solid var(--glass-border); }
-          .brand { margin-bottom: 0; }
-          .side-nav { flex-direction: row; gap: 1rem; }
-          .side-nav button { padding: 0.75rem 1rem; width: auto; font-size: 0.9rem; }
-          .side-nav button.active { border-left: none; border-bottom: 3px solid var(--accent-blue); border-radius: 12px; }
-          .sidebar-footer { margin-top: 0; border-top: none; padding: 0; }
-          .logout-btn { padding: 0.75rem 1rem; }
+        /* ===== ADMIN RESPONSIVE REFINED ===== */
+        @media (max-width: 1100px) {
           .stats { grid-template-columns: repeat(2, 1fr); }
-          .form-grid { grid-template-columns: 1fr; }
           .search-bar { width: 300px; }
         }
-        @media (max-width: 768px) {
-          .sidebar { flex-wrap: wrap; gap: 1rem; }
-          .side-nav { width: 100%; justify-content: space-between; overflow-x: auto; padding-bottom: 0.5rem; }
-          .stats { grid-template-columns: 1fr; gap: 1.5rem; }
-          .top-bar { flex-direction: column; gap: 1.5rem; align-items: stretch; }
+
+        @media (max-width: 900px) {
+          .admin-container { flex-direction: column; }
+          .sidebar { 
+            width: 100%; 
+            height: auto;
+            flex-direction: column; 
+            padding: 1.5rem; 
+            border-right: none; 
+            border-bottom: 1px solid #f1f5f9; 
+            position: sticky;
+            top: 0;
+            background: white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+          }
+          .brand { margin-bottom: 2rem; justify-content: center; }
+          .side-nav { 
+            flex-direction: row; 
+            overflow-x: auto; 
+            padding-bottom: 0.5rem; 
+            gap: 0.5rem;
+            scrollbar-width: none;
+          }
+          .side-nav::-webkit-scrollbar { display: none; }
+          .side-nav button { 
+            padding: 0.75rem 1.25rem; 
+            width: auto; 
+            white-space: nowrap; 
+            font-size: 0.85rem; 
+          }
+          .side-nav button.active { 
+            box-shadow: inset 0 -3px 0 var(--accent-blue);
+          }
+          .sidebar-footer { display: none; }
+          .main-content { padding: 1.5rem; }
+          .top-bar { flex-direction: column; gap: 1.5rem; margin-bottom: 2.5rem; }
           .search-bar { width: 100%; }
-          .search-bar:focus-within { width: 100%; }
           .user-profile { align-self: flex-end; }
+        }
+
+        @media (max-width: 640px) {
+          .stats { grid-template-columns: 1fr; }
+          .form-grid { grid-template-columns: 1fr; }
+          .stat-card { padding: 1.5rem; gap: 1.25rem; }
+          .stat-card h3 { font-size: 1.75rem; }
+          .icon { width: 56px; height: 56px; }
+          .glass { padding: 1.5rem; border-radius: 20px; }
+          .list-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
           table { display: block; overflow-x: auto; white-space: nowrap; }
           .admin-product-item { flex-direction: column; align-items: flex-start; gap: 1rem; }
           .product-actions { width: 100%; justify-content: flex-end; }
-        }
-        @media (max-width: 480px) {
-          .main-content { padding: 1.5rem 1rem; }
-          .stat-card { padding: 1.5rem; }
-          .stat-card h3 { font-size: 1.8rem; }
-          .icon { width: 48px; height: 48px; }
-          .glass { padding: 1.5rem; }
+          .product-img { width: 100%; height: 200px; } /* Mobile grid style */
         }
       `}</style>
     </div>
