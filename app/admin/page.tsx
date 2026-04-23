@@ -870,21 +870,33 @@ export default function AdminDashboard() {
         .msg-cell { max-width: 250px; color: var(--text-dim); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
         .admin-product-list { margin-top: 1.5rem; display: flex; flex-direction: column; gap: 1rem; }
         .admin-product-item {
-          background: var(--glass-bg);
-          border: 1px solid var(--glass-border);
-          padding: 1rem;
-          border-radius: 16px;
+          background: white;
+          padding: 1.25rem;
+          border-radius: 20px;
           display: flex;
           align-items: center;
           gap: 1.5rem;
-          transition: all 0.3s;
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+          border: 1px solid #f1f5f9;
+          box-shadow: 0 4px 12px rgba(0,0,0,0.02);
         }
         .admin-product-item:hover {
-          background: rgba(255, 255, 255, 0.05);
-          transform: scale(1.01);
+          transform: translateX(8px);
+          box-shadow: 0 12px 24px rgba(0,0,0,0.06);
+          border-color: var(--accent-blue);
         }
-        .product-img { width: 60px; height: 60px; background: rgba(0,0,0,0.4); border-radius: 12px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-        .product-img img { width: 100%; height: 100%; object-fit: cover; }
+        .product-img { 
+          width: 72px; 
+          height: 72px; 
+          background: #f8fafc; 
+          border-radius: 16px; 
+          display: flex; 
+          align-items: center; 
+          justify-content: center; 
+          overflow: hidden; 
+          border: 1px solid #eee;
+        }
+        .product-img img { width: 100%; height: 100%; object-fit: contain; padding: 4px; }
         .product-info-admin { flex: 1; }
         .product-info-admin h4 { margin: 0; font-size: 1.1rem; color: var(--text-main); font-weight: 600; }
         .product-info-admin p { margin: 0.25rem 0 0; font-size: 0.85rem; color: var(--text-dim); }
@@ -924,10 +936,10 @@ export default function AdminDashboard() {
         .delete-btn:hover { background: var(--danger); color: white; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(239,68,68,0.3); }
         .glass {
           background: white;
-          padding: 2rem;
-          border-radius: 24px;
-          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
-          border: 1px solid #e2e8f0;
+          padding: 2.5rem;
+          border-radius: 32px;
+          box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03);
+          border: 1px solid #f1f5f9;
           color: var(--text-main);
         }
         .list-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; }
@@ -993,7 +1005,17 @@ export default function AdminDashboard() {
         .empty-cell { text-align: center; padding: 2rem; color: var(--text-dim); }
         .pulse { animation: pulse 2s infinite; }
         @keyframes pulse { 0% { opacity: 1; transform: scale(1); } 50% { opacity: 0.8; transform: scale(0.95); } 100% { opacity: 1; transform: scale(1); } }
-        .stock-badge { background: rgba(96, 165, 250, 0.15); padding: 4px 10px; border-radius: 6px; font-size: 0.8rem; color: #60a5fa; display: inline-block; margin-top: 8px; font-weight: 700; border: 1px solid rgba(96, 165, 250, 0.2); }
+        .stock-badge { 
+          background: #eff6ff; 
+          padding: 6px 14px; 
+          border-radius: 50px; 
+          font-size: 0.75rem; 
+          color: #2563eb; 
+          display: inline-block; 
+          margin-top: 8px; 
+          font-weight: 700; 
+          border: 1px solid #dbeafe; 
+        }
         .btn-primary { background: linear-gradient(135deg, #2563eb, #3b82f6); color: white; border: none; border-radius: 12px; padding: 1rem; font-weight: 700; cursor: pointer; transition: all 0.3s; box-shadow: 0 4px 15px rgba(37,99,235,0.4); }
         .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(37,99,235,0.5); }
         .btn-outline { background: white; color: var(--text-main); border: 1px solid #e2e8f0; border-radius: 12px; padding: 1rem; font-weight: 700; cursor: pointer; transition: all 0.3s; }
